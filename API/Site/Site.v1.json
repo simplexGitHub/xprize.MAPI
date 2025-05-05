@@ -1,0 +1,293 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Site",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7760"
+    }
+  ],
+  "paths": {
+    "/api/addPerimeter": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "addPerimeter",
+        "operationId": "post-api-addPerimeter",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Add perimeter to area. Replaces existing perimeter",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Site/Perimeter.v1.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/addNFZ": {
+      "post": {
+        "summary": "addNFZ",
+        "operationId": "post-api-setExternalNFZ",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/Site/addNFZResponse.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nfz": {
+                    "$ref": "../../Models/Site/NFZ.v1.json"
+                  }
+                },
+                "required": [
+                  "nfz"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "nfz": {
+                      "id": "string",
+                      "name": "test",
+                      "maxAlt": 5000,
+                      "polygonPoints": [
+                        [
+                          -115.10354518890382,
+                          35.96911507577482,
+                          0
+                        ],
+                        [
+                          -115.10787963867188,
+                          35.9649470255427,
+                          0
+                        ],
+                        [
+                          -115.10727882385252,
+                          35.9644260037931,
+                          0
+                        ],
+                        [
+                          -115.10264396667479,
+                          35.969010877200624,
+                          0
+                        ],
+                        [
+                          -115.10354518890382,
+                          35.96911507577482,
+                          0
+                        ]
+                      ],
+                      "type": "static"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Add NFZ"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/deleteNFZ": {
+      "post": {
+        "summary": "deleteNFZ",
+        "operationId": "post-api-deleteExternalNFZ",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Site/nfzID.json"
+              }
+            }
+          },
+          "description": ""
+        },
+        "description": ""
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/getAllSiteNFZs": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "getAllSiteNFZs",
+        "operationId": "post-api-getAllSiteNFZs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/Site/SITE_DATA.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get perimeter and all NFZs (of newest version)"
+      }
+    },
+    "/api/getNfzInfluence": {
+      "post": {
+        "summary": "getNfzInfluence",
+        "operationId": "post-api-getNfzInfluence",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "success": {
+                          "type": "boolean"
+                        },
+                        "data": {
+                          "type": "object",
+                          "properties": {
+                            "allowedId": {
+                              "type": "string"
+                            },
+                            "nfzId": {
+                              "type": "string"
+                            },
+                            "polygon": {
+                              "$ref": "../../Models/geo/GEOJSON_MULTIPOLYGON.json"
+                            }
+                          }
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "success"
+                      ]
+                    }
+                  ]
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "description": "Request to get a specific NFZ influence polygon. There call should not be done on huge Nfzs as this may cause performance issues. ",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nfzID": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "nfzID"
+                ]
+              }
+            }
+          },
+          "description": "The Nfz Id"
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

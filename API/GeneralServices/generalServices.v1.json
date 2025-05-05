@@ -1,0 +1,753 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "generalServices",
+    "version": "1.0",
+    "description": "generalServices"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7760"
+    }
+  ],
+  "paths": {
+    "/api/sendUserMessage": {
+      "post": {
+        "summary": "sendUserMessage",
+        "operationId": "post-api-sendUserMessage",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/generalServices/userMessage.v1.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/getAltitudeFromDTM": {
+      "post": {
+        "summary": "getAltitudeFromDTM",
+        "operationId": "post-api-getAltitudeFromDTM",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/generalServices/getDTMResponse.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "get dtm for array of points",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/generalServices/getDTMRequest.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/getVersions": {
+      "post": {
+        "summary": "getVersions",
+        "operationId": "post-api-getVersions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "version": {
+                          "type": "string"
+                        },
+                        "applications": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "application": {
+                                "$ref": "../../Models/generalServices/applications.json"
+                              },
+                              "versions": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "service": {
+                                      "type": "string"
+                                    },
+                                    "version": {
+                                      "type": "string"
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "required": [
+                              "application",
+                              "versions"
+                            ]
+                          }
+                        },
+                        "releaseNotes": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "version"
+                      ]
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "success": true,
+                      "description": "string",
+                      "errors": [
+                        {
+                          "error": "MissionUploadFail",
+                          "description": "Can't upload mission to drone"
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "application": {
+                          "$ref": "../../Models/generalServices/applications.json"
+                        },
+                        "versions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "service": {
+                                "type": "string"
+                              },
+                              "version": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "application",
+                        "versions"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "The drone IP should be sent without the port only the IP",
+                "properties": {
+                  "application": {
+                    "$ref": "../../Models/generalServices/applications.json"
+                  },
+                  "droneId": {
+                    "$ref": "../../Models/AirVehicle/airVehicleIdType.json"
+                  },
+                  "droneIp": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "application"
+                ]
+              }
+            }
+          },
+          "description": "The requestor should request the specific application for versions. In case of \"drone\" -the drone id should be sent"
+        },
+        "description": "Get application versions"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/getAllMessages": {
+      "post": {
+        "summary": "",
+        "operationId": "post-api-getAllMessages",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "x-stoplight": {
+                        "id": "8vpc3kyz6zpnq"
+                      },
+                      "properties": {
+                        "data": {
+                          "x-stoplight": {
+                            "id": "uqj24hxp5mkc6"
+                          },
+                          "anyOf": [
+                            {
+                              "properties": {
+                                "userMessages": {
+                                  "x-stoplight": {
+                                    "id": "ue433bdiqpyvp"
+                                  },
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                                  }
+                                },
+                                "GW": {
+                                  "x-stoplight": {
+                                    "id": "jw5y2pssmdj5b"
+                                  },
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                                  }
+                                },
+                                "FCS": {
+                                  "x-stoplight": {
+                                    "id": "rau0bnzguecbn"
+                                  },
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                                  }
+                                },
+                                "webServer": {
+                                  "x-stoplight": {
+                                    "id": "qc8mpuwytawbi"
+                                  },
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                                  }
+                                },
+                                "actions": {
+                                  "x-stoplight": {
+                                    "id": "kqk2r2fkaq04e"
+                                  },
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                                  }
+                                },
+                                "MAPI": {
+                                  "x-stoplight": {
+                                    "id": "mr9t6ivggqy3v"
+                                  },
+                                  "type": "array",
+                                  "items": {
+                                    "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "type": "object"
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "success": true,
+                      "description": "string",
+                      "errors": [
+                        {
+                          "error": "MissionUploadFail",
+                          "description": "Can't upload mission to drone"
+                        }
+                      ],
+                      "data": {
+                        "userMessages": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ],
+                        "GW": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ],
+                        "FCS": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ],
+                        "WS": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ],
+                        "actions": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ],
+                        "MAPI": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/getUserMessages": {
+      "post": {
+        "summary": "",
+        "operationId": "post-api-getUserMessages",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "x-stoplight": {
+                        "id": "r6s0gy7zk4prh"
+                      },
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "x-stoplight": {
+                            "id": "aq2j0kucws6cu"
+                          },
+                          "required": [
+                            "userMessages"
+                          ],
+                          "properties": {
+                            "userMessages": {
+                              "type": "array",
+                              "x-stoplight": {
+                                "id": "pfhlsfx9udj2m"
+                              },
+                              "items": {
+                                "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/getMessagesByType": {
+      "post": {
+        "summary": "",
+        "operationId": "post-api-getMessagesByType",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "x-stoplight": {
+                        "id": "mr3t4jw19uwyi"
+                      },
+                      "properties": {
+                        "data": {
+                          "type": "object",
+                          "x-stoplight": {
+                            "id": "6dt0aoc55zs9x"
+                          },
+                          "properties": {
+                            "userMessages": {
+                              "type": "array",
+                              "x-stoplight": {
+                                "id": "95z38ewe868n0"
+                              },
+                              "items": {
+                                "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                              }
+                            },
+                            "GW": {
+                              "type": "array",
+                              "x-stoplight": {
+                                "id": "6x7tsn323rync"
+                              },
+                              "items": {
+                                "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                              }
+                            },
+                            "FCS": {
+                              "type": "array",
+                              "x-stoplight": {
+                                "id": "xmp1iotcrpw6n"
+                              },
+                              "items": {
+                                "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                              }
+                            },
+                            "webServer": {
+                              "type": "array",
+                              "x-stoplight": {
+                                "id": "htjnz3je9evil"
+                              },
+                              "items": {
+                                "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                              }
+                            },
+                            "actions": {
+                              "type": "array",
+                              "x-stoplight": {
+                                "id": "9x5jm20u27ggg"
+                              },
+                              "items": {
+                                "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                              }
+                            },
+                            "MAPI": {
+                              "type": "array",
+                              "x-stoplight": {
+                                "id": "gxqhjgf13iqil"
+                              },
+                              "items": {
+                                "$ref": "../../Models/General/OUT_USER_MESSAGE.json"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  ]
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {
+                      "success": true,
+                      "description": "string",
+                      "errors": [
+                        {
+                          "error": "MissionUploadFail",
+                          "description": "Can't upload mission to drone"
+                        }
+                      ],
+                      "data": {
+                        "userMessages": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ],
+                        "GW": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ],
+                        "FCS": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ],
+                        "webServer": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ],
+                        "actions": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ],
+                        "MAPI": [
+                          {
+                            "id": "string",
+                            "type": "info",
+                            "title": "string",
+                            "message": "string",
+                            "timestamp": 0,
+                            "errors": {
+                              "error": "MissionUploadFail",
+                              "description": "Can't upload mission to drone"
+                            },
+                            "airVehicleId": "string",
+                            "missionId": "string",
+                            "emitter": "string"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "string",
+                    "x-stoplight": {
+                      "id": "cb5fu80b7aq9a"
+                    },
+                    "enum": [
+                      "userMessages",
+                      "GW",
+                      "FCS",
+                      "webServer",
+                      "actions",
+                      "MAPI"
+                    ],
+                    "example": "userMessages",
+                    "default": "userMessages",
+                    "minLength": 0,
+                    "maxLength": 0
+                  }
+                },
+                "required": [
+                  "data"
+                ]
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "data": "userMessages"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

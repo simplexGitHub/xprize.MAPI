@@ -1,0 +1,245 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "winch",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7760"
+    }
+  ],
+  "paths": {
+    "/api/winchDeliver": {
+      "post": {
+        "summary": "winchDeliver",
+        "operationId": "post-deliver",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Winch/WinchCommand.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/winchReelUp": {
+      "post": {
+        "summary": "winchReelUp",
+        "operationId": "post-reelUp",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Winch/WinchCommand.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/winchReelDown": {
+      "post": {
+        "summary": "winchReelDown",
+        "operationId": "post-reelDown",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Winch/WinchCommand.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/winchFreewheel": {
+      "post": {
+        "summary": "winchFreewheel",
+        "operationId": "post-freewheel",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Winch/WinchCommand.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/winchLock": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "winchLock",
+        "operationId": "post-api-winchLock",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Winch/WinchCommand.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/winchStop": {
+      "post": {
+        "summary": "winchStop",
+        "operationId": "post-api-stop",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Winch/WinchCommand.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

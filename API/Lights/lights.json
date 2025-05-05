@@ -1,0 +1,154 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "36vairkurvm1c"
+  },
+  "info": {
+    "title": "lights",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7760"
+    }
+  ],
+  "paths": {
+    "/api/openLights": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "openLights",
+        "operationId": "post-api-openLights",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Start drone light. In case the lights intesity is not defined (on/off way) the intensity of the lights will be defined internally by the Rest logic implementation.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              }
+            }
+          },
+          "description": "The drone id"
+        }
+      }
+    },
+    "/api/setLightsIntensity": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "setLightsIntensity",
+        "operationId": "post-api-setLightsIntensity",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Set the drone lights intesity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "lightsIntensity": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "lightsIntensity"
+                    ]
+                  },
+                  {
+                    "$ref": "../../Models/AirVehicle/airVehicleId.json"
+                  }
+                ]
+              }
+            }
+          },
+          "description": "The lights intesity number"
+        }
+      }
+    },
+    "/api/closeLights": {
+      "post": {
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": false,
+            "description": "bearer <<token>>"
+          }
+        ],
+        "summary": "closeLights",
+        "operationId": "post-api-closeLights",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Shut down lights",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

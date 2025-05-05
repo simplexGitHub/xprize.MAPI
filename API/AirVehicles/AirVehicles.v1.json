@@ -1,0 +1,649 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AirVehicle",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7760"
+    }
+  ],
+  "paths": {
+    "/api/enableAirVehicle": {
+      "post": {
+        "summary": "enableAirVehicle",
+        "operationId": "post-api-enableAirVehicles",
+        "responses": {
+          "200": {
+            "description": "If the air vehicle is in status NotActive or NotActiveAllocated and if the air vehicle is technicaly ok it will be set to Ready",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          },
+          "": {
+            "description": "If the command succeses - return success true",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Set air vehicle to Ready status from NotActive or NotActiveAllocated status",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/disableAirVehicle": {
+      "post": {
+        "summary": "disableAirVehicle",
+        "operationId": "post-api-ddisableAirVehicles",
+        "responses": {
+          "200": {
+            "description": "If air vehicle was on status Ready it will change status to NotActive",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Set air vehicle to status NotActive from status Ready",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/setAirVehicleAltitude": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "setAirVehicleAltitude",
+        "operationId": "post-api-setAirVehicleAltitude-airVehicleId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Set altitude range in which Air vehicle is permitted to fly. The request can be executed only when the air vehicle is on status NotActive and the requested altitude is not taken by other air vehicles and it is in configuration defined altitude rang",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/setAirVehicleAltitude.json"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              }
+            }
+          },
+          "description": "If maxAlt is not defined, only the minAlt will be used for Air vehicle's altitude in flight"
+        }
+      }
+    },
+    "/api/returnHomeAirVehicle": {
+      "post": {
+        "summary": "returnHomeAirVehicle",
+        "operationId": "post-api-returnHomeAirVehicles",
+        "responses": {
+          "200": {
+            "description": "The success in the response indicates only that the command was received. Monitoring of telemetry (status change to \"Return Home\") is needed to check if the command succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          },
+          "": {
+            "description": "If success true than the air vehicle will return home (start the return home proccess)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Command the air vehicle to return to the last set home location and land. The air vehicle will return home ",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "../../Models/AirVehicle/airVehicleId.json"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "isForceRH": {
+                        "type": "boolean",
+                        "description": "Forces UAV to RH, ignoring NFZs UAV rises to configured alt. It will not force return if LockedForRH."
+                      },
+                      "isIgnoreLockedForRH": {
+                        "type": "boolean",
+                        "description": "RH can be locked by UAV internal state (for example if winch is down). The param forces AV to ignore the lock."
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Return Home command. Optional params:\nisIgnoreLockedForRH - RH can be locked by UAV internal state (for example if winch is down). The param forces AV to ignore the lock.\nisForceRH - Forces UAV to RH, ignoring NFZs UAV rises to configured alt. It will not force return if LockedForRH."
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/pauseAirVehicle": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "pauseAirVehicle",
+        "operationId": "post-api-pauseAirVehicle-airVehicleId",
+        "responses": {
+          "200": {
+            "description": "The success in the response indicates only that the command was received. Monitoring of telemetry (routeStatus change to \"Paused\") is needed to check if the command succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Pause flight. The command is available only when Air vehicle is in status \"On mission\"",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/resumeAirVehicle": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "resumeAirVehicle",
+        "operationId": "post-api-resumeAirVehicle-airVehicleId",
+        "responses": {
+          "200": {
+            "description": "The success in the response indicates only that the command was received. Monitoring of telemetry (routeStatus change to \"Running\") is needed to check if the command succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Resume flight. The command is available only when the Air vehicle is in status \"On mission\" and is paused.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/setManualControl": {
+      "post": {
+        "summary": "setManualControl",
+        "operationId": "post-api-setManualControl",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "If the drone set to manual process did not failed a success true response will be retured. Otherwise - flase. A success response does not mean the drone is in Manual status. The caller need to follow the drone telemetry to monitor it's ststus.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "To manually control drones, it is necessary to initiate a \"Set Manual Control\" call. This call serves two purposes:\n\n1. It changes the drone status to \"Manual\", which is a condition for manual control.\n2. It registers the caller's Mapi token to the C2 services in order to authenticate manual control commands. If the \"Manual\" status is not a result of this call, it will not be possible to control the drone.\n \n- The caller's token must belong to a user with role \"Controller\".\n- If one user already controls a drone, another user will be rejected as long as the first user controlls it.\n- The token should be saved because it is the only token that will work with manual control udp commands even if the token itself is refreshed in the middle.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              }
+            }
+          },
+          "description": "The drone Id and the Mapi token recieved in the last login. The token will be saved in the C2 in order to enable the manual control commands later on."
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Authorization",
+            "required": false,
+            "description": "bearer <<token>>"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/setAutoControl": {
+      "post": {
+        "summary": "setAutoControl",
+        "operationId": "post-api-setAutoControl",
+        "responses": {
+          "200": {
+            "description": "If the process of moving the drone from Manual control to the c2 control did not fail a success response will be sent. The caller need to monitor the airVehicles telemetry in order to make sure the drone status changed as expected. ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Set auto control is the return from manual control to the c2 control.\nUnlike UDP command, an updated token is required for this call. ",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              },
+              "examples": {
+                "Example 1": {
+                  "value": {
+                    "airVehicleId": "string"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The drone id"
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/isAirVehicleInNfz": {
+      "post": {
+        "summary": "isAirVehicleInNfz",
+        "operationId": "post-api-isAirVehicleInNfz",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "insideNfz": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "insideNfz"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Check if drone inside nfz influence ",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/isAirVehicleInsidePerimeter": {
+      "post": {
+        "summary": "isAirVehicleInsidePerimeter",
+        "operationId": "post-api-isAirVehicleInsidePerimeter",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "description": "If response false - the object will not be sent",
+                      "properties": {
+                        "insidePerimeter": {
+                          "type": "boolean",
+                          "description": "True if inside perimeter"
+                        }
+                      },
+                      "required": [
+                        "insidePerimeter"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Query if current drone location is inside the site perimeter",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleIdType.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/recomputeRHRoute": {
+      "post": {
+        "summary": "recomputeRHRoute",
+        "operationId": "post-api-recomputeRHRoute",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Recomputes route on RH and if succeeds, sends the drone on the new route",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/setObserving": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "setObserving",
+        "operationId": "post-api-setObserving-airVehicleId",
+        "responses": {
+          "200": {
+            "description": "The success in the response indicates only that the command was received. Monitoring of telemetry (routeStatus change to \"Observing\") is needed to check if the command succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Change Air vehicle status to \"Observing\"",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/AirVehicle/airVehicleId.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/changeAltitude": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "changeAltitude",
+        "operationId": "post-api-changeAltitude-airVehicleId",
+        "responses": {
+          "200": {
+            "description": "The success in the response indicates only that the command was received. Monitoring of telemetry is needed to check if the command succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Change Air vehicle altitude. Only available in status \"Observing\".",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "../../Models/AirVehicle/airVehicleId.json"
+                  },
+                  {
+                    "type": "object",
+                    "x-stoplight": {
+                      "id": "4w1e6kqf855d2"
+                    },
+                    "properties": {
+                      "altitudeAGL": {
+                        "type": "number",
+                        "x-stoplight": {
+                          "id": "wgi2jkkwrpk47"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

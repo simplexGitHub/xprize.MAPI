@@ -1,0 +1,249 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "gimbal",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7760"
+    }
+  ],
+  "paths": {
+    "/api/setGimbal": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "setGimbal",
+        "operationId": "post-api-setGimbal",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Gimbal/setGimbal.json"
+              }
+            }
+          }
+        },
+        "description": "Set the gimbal to angles "
+      }
+    },
+    "/api/gimbalMove": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "gimbalMove",
+        "operationId": "post-api-gimbalMove",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "success": true,
+                      "description": "OK"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Gimbal/gimbalMove.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "sensorId": "sensor1",
+                    "deltaYaw": 10,
+                    "deltaPitch": -2,
+                    "deltaRoll": 0
+                  }
+                }
+              }
+            }
+          },
+          "description": "How many degrees to move the gimbal in delta to its last location"
+        },
+        "description": "Increments of movement to the gimbal"
+      }
+    },
+    "/api/setGimbalFree": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "setGimbalFree",
+        "operationId": "post-api-setGimbalFree",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "success": false,
+                      "description": "No such sensor id"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Gimbal/setGimbalFree.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "sensorId": "sensor1"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The sensor id of the gimbal"
+        },
+        "description": "if the gimbal is locked on target - set it free"
+      }
+    },
+    "/api/setLookAtTarget": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "setLookAtTarget",
+        "operationId": "post-api-setLookAtTarget",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Gimbal/setLookAtTarget.json"
+              }
+            }
+          },
+          "description": "Switch between gimbal following target and manual control"
+        },
+        "description": "Set the gimbal to continuaslly look at the target or stop looking at the target defined in the parameters"
+      }
+    },
+    "/api/setCameraZoom": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "setCameraZoom",
+        "operationId": "post-api-setCameraZoom",
+        "responses": {
+          "200": {
+            "description": "Success response means that the requst is taken care. One needs to monitor the telemetry or video to monitor the zoom behaviour.\nIn case no camera defined or no zoom capabilities - a false response will be sent.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "If the drone carries a camera and a gimbal, the gimbal is defined in that drone's config, and the camera can zoom - you can adjust the camera's zoom using the command.\nThe specific camera's zoom units are translated from the numbers 1-100 sent in the request parameters.\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Gimbal/setCameraZoom.json"
+              }
+            }
+          },
+          "description": "The zoom params are 1-100 and are converted to the specific camera zoom units (e.g if the camera zoom is defined as 1-6 then sending 50 will be converted to 3 for the camera)"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}
