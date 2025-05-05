@@ -1,0 +1,1266 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Mission",
+    "version": "1.0",
+    "description": "All the Missions (Tasks) actions"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7760"
+    }
+  ],
+  "paths": {
+    "/api/addRouteMission": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "addRouteMission",
+        "operationId": "post-api-addRouteMission",
+        "responses": {
+          "200": {
+            "description": "If the operation succeeded then return the new mission id, elae return the error description",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/Mission/MissionResponses/addMissionResponse.v1.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "success": true,
+                      "description": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/Route/ROUTE_MISSION.v1.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "routeMission": {
+                      "yaw": 0,
+                      "toBody": true,
+                      "velocity": 12,
+                      "actionOnRouteEnd": "Hover",
+                      "routePoints": [
+                        {
+                          "yaw": 0,
+                          "toBody": true,
+                          "velocity": 0,
+                          "PointLocation": {
+                            "geometry": {
+                              "type": "string",
+                              "coordinates": [
+                                32.8969,
+                                -117.199,
+                                0
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "yaw": 0,
+                          "toBody": true,
+                          "velocity": 0,
+                          "PointLocation": {
+                            "geometry": {
+                              "type": "string",
+                              "coordinates": [
+                                32.8976,
+                                -117.199,
+                                0
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "name": "Route Example"
+                  }
+                }
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "description": "Route mission data"
+        },
+        "description": "Adding new mission of type Route"
+      }
+    },
+    "/api/addPointMission": {
+      "post": {
+        "summary": "addPointMission (deprecated)",
+        "operationId": "post-missionAction-addPointMission",
+        "responses": {
+          "200": {
+            "description": "If the operation succeeded then return the new mission id, else return the error description",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/Mission/MissionResponses/addMissionResponse.v1.json"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": {
+                      "success": true,
+                      "missionID": "eveqipszge"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "": {
+            "description": ""
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/Point/POINT_MISSION.v1.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "targetPoint": {
+                      "latitude": 32.8964,
+                      "longitude": -117.19918,
+                      "altitude": 100
+                    },
+                    "azimuthToPoint": true,
+                    "viewingAngle": 270
+                  }
+                }
+              }
+            }
+          },
+          "description": "Mission Point data"
+        },
+        "description": "Add new mission of type Point"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/addWaspMission": {
+      "post": {
+        "summary": "addWaspMission",
+        "operationId": "post-missionAction-addWaspMission",
+        "responses": {
+          "200": {
+            "description": "If the operation succeeded then return the new mission id, elae return the error description",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/Mission/MissionResponses/addMissionResponse.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/Wasp/WASP_MISSION.v1.json"
+              }
+            }
+          },
+          "description": "Wasp mission data"
+        },
+        "description": "Add new mission of type WASP"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/addSecurityMission": {
+      "post": {
+        "summary": "addSecurityMission (deprecated)",
+        "operationId": "post-missionAction-addSecurityRouteTask",
+        "responses": {
+          "200": {
+            "description": "If the operation succeeded then return the new mission id, elae return the error description",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/Mission/MissionResponses/addMissionResponse.v1.json"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/Security/SECURITY_MISSION.v1.json"
+              },
+              "examples": {}
+            }
+          },
+          "description": "Security mission data"
+        },
+        "description": "Add new mission of type Security"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/addShipMission": {
+      "post": {
+        "summary": "addShipMission",
+        "operationId": "post-missionAction-addShipMission",
+        "responses": {
+          "200": {
+            "description": "If the operation succeeded then return the new mission id, else return the error description",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/Mission/MissionResponses/addMissionResponse.v1.json"
+                }
+              }
+            }
+          },
+          "": {
+            "description": ""
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/Ship/SHIP_MISSION.v1.json"
+              }
+            }
+          },
+          "description": "Shipment mission data"
+        },
+        "description": "Add new mission of type Shipment"
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/addDeliveryPointMission": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "addDeliveryPointMission",
+        "operationId": "post-api-addDeliveryPointMission",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/Mission/MissionResponses/addMissionResponse.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/DeliveryPoint/DELIVERY_POINT_MISSION.json"
+              },
+              "examples": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/addPatrolMission": {
+      "post": {
+        "summary": "",
+        "operationId": "post-api-addPatrolMission",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/Mission/MissionResponses/addMissionResponse.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/Patrol/ADD_PATROL_MISSION.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/addDynamicPointMission": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "addDynamicPointMission (deprecated)",
+        "operationId": "post-api-addDynamicPointMission",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "../../Models/Mission/MissionResponses/addMissionResponse.v1.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "dynamicPointId": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "description": "Add a point mission that the target point can be updated during mission life",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/DynamicPoint/DYNAMIC_POINT_MISSIOM.json"
+              }
+            }
+          },
+          "description": "The target point to follow. The external system will be using the target point id to update the point location using the updateDynamicPoint function. "
+        }
+      }
+    },
+    "/api/updateDynamicPointLocation": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "updateDynamicPointLocation (deprecated)",
+        "operationId": "post-api-updateDynamicPointLocation",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "description": "Update the dynamic point location of a running dynamic point mission",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "missionID": {
+                    "type": "string",
+                    "description": "The mission id to update"
+                  },
+                  "dynamicPointId": {
+                    "type": "string",
+                    "description": "The dynamic point id rcieved from MAPI when using the addDynamicPointMission function"
+                  },
+                  "dynamicPointLocation": {
+                    "$ref": "../../Models/geo/GEOPOINT3D.v1.json"
+                  }
+                },
+                "required": [
+                  "missionID",
+                  "dynamicPointId",
+                  "dynamicPointLocation"
+                ]
+              }
+            }
+          },
+          "description": "The dynamic point new location"
+        }
+      }
+    },
+    "/api/allocateAirVehicleToMission": {
+      "post": {
+        "summary": "allocateAirVehicleToMission",
+        "operationId": "post-api-allocateToTask",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          },
+          "": {
+            "description": "General response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Allocate specific air vehicle to specific mission. If the air vehicle is capable for the mission it will be allocated to the mission",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/MissionRequests/airVehicle_mission_pair.v1.json"
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/unallocateAirVehicleToMission": {
+      "post": {
+        "summary": "allocateAirVehicleToMission",
+        "operationId": "post-api-allocateToTask",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          },
+          "": {
+            "description": "General response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Unallocate air vehicle from mission. If the air vehicle is not in status NotActiveAllocated to a mission that is executed the request will fail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/MissionRequests/airVehicle_mission_pair.v1.json"
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/deleteMission": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "deleteTask",
+        "operationId": "post-missionAction-deleteTask",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete the task of the task id",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/MissionRequests/missionId.json"
+              },
+              "examples": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/startMission": {
+      "post": {
+        "summary": "startMission",
+        "operationId": "post-missionAction-startMission",
+        "responses": {
+          "200": {
+            "description": "Return success if the mission id exist, the mission is not executed and the operation succeeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "missionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Execute the mission of the mission id if the mission exist and in not in executed mode. A success response means that the execution proccess will be started and not that the mission started. The mission status needs to be monitored using the missions telemetry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/MissionRequests/START_MISSION.json"
+              }
+            }
+          },
+          "description": ""
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/stopMission": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "stopMission",
+        "operationId": "post-missionAction-stopMission-missionId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              },
+              "multipart/form-data": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "missionId": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "missionId"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Stop the mission of the mission id if the mission exist and in executed mode. A success response means that the stopping proccess will be started and not that the mission stopped. The mission status needs to be monitored using the missions telemetry.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/MissionRequests/missionId.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/getCalculatedRoute": {
+      "post": {
+        "summary": "getCalculatedRoute",
+        "operationId": "post-api-getCalculatedRoute",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/Mission/MissionResponses/getCalculatedRouteResponse.v1.json"
+                }
+              }
+            }
+          },
+          "": {
+            "description": "The calculated route as a GeoJson polyline type",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/geo/GeoLineString.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "The request is for the purpose of showing the planned polyline route that will be executed if the chosen mission will be using the allocated air vehicle over the current site NFZs state. If the mission has no allocated air vehicle or the system can't calculate a legal route the request will fail and a fail response will be sent.\nThe mission needs to be in executed state.\nThe request is for \"Shipping\" or \"Delivery\" missions only",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/MissionRequests/missionId.json"
+              },
+              "examples": {
+                "example-1": {}
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/reExecuteMission": {
+      "post": {
+        "summary": "reExecuteMission",
+        "operationId": "post-api-reExecuteMission",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          },
+          "": {
+            "description": "If the response is success true the new mission route should be shown at the specific mission telemetry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Request for mission reExecute. If the mission is executed and the assigned air vehicle is in status OnMission then it can be re executed. Possitive response means that the re execution proccess started and there is a need to monitor the mission using the missions telemetry.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/MissionRequests/missionId.json"
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/allocatePilotToMission": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "allocatePilotToMission",
+        "operationId": "post-api-allocatePilotToMission",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/MissionRequests/pilot_mission_pair.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/unallocatePilotToMission": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "unallocatePilotToMission",
+        "operationId": "post-api-unallocatePilotToMission",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/MissionRequests/pilot_mission_pair.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/addTargetTrackingMission": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "addTargetTrackingMission",
+        "operationId": "post-api-addTrackPointMission",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/Mission/MissionResponses/addMissionResponse.v1.json"
+                },
+                "examples": {}
+              }
+            }
+          }
+        },
+        "description": "Add a Track Point mission. The Track Point mission will enable do control both the drone location and track point location during mission. The drone location changes will be enabled only on Observing status of the drone and will done using the updateDroneLocationOnTrackPointMission call. The target update will be done using the updateTrackPointLocation call.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Mission/TargetTracking/TARGET_TRACKING_MISSION.json"
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "trackPointLocation": {
+                      "latitude": 34.81,
+                      "longitude": 32.161,
+                      "altitude": 50
+                    },
+                    "name": "string",
+                    "distanceFromTrackPoint": 0,
+                    "trackPointAGL": 0,
+                    "setAngleToTarget": true,
+                    "angleToTrackPoint": 0,
+                    "isAGLFlight": true,
+                    "missionAGL": 0,
+                    "droneHeadingTypeAtLastRoutePoint": 0,
+                    "headingAtLastRoutePoint": "ToGimbal"
+                  }
+                }
+              }
+            }
+          },
+          "description": "The Track Point Mission parameters"
+        }
+      }
+    },
+    "/api/updateDroneLocationOnTargetTrackingMission": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "updateDroneLocationOnTargetTrackingMission (deprecated)",
+        "operationId": "post-api-updateDroneLocationOnDynamicViewPointMission",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "LEGACY - changed to \"moveAirVehicle\".\n\nRequest to update the drone to fly to new waypoint location. The action is relevant only when the drone is on Observing status allocated to a mission allowing this request. On each request the drone will stop last fly-to request and commit the current request.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "missionId": {
+                    "type": "string",
+                    "description": "The missionId that the drone is allocated to"
+                  },
+                  "requestedLocation": {
+                    "$ref": "../../Models/geo/GEOPOINT3D.v1.json"
+                  },
+                  "altitude": {
+                    "type": "number",
+                    "description": "The MSL altitude for drone target point flight. The drone will fly on direct line to that point altitue.\nIf not sent, then - will be used the current drone MSL altitude."
+                  },
+                  "airVehicleId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "missionId",
+                  "requestedLocation",
+                  "airVehicleId"
+                ]
+              }
+            }
+          },
+          "description": "The fly-to parameters. If the heading type will not be sent the parameters will be the mission defined parameters"
+        },
+        "parameters": []
+      }
+    },
+    "/api/moveAirVehicle": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ],
+      "post": {
+        "summary": "moveAirVehicle",
+        "operationId": "post-api-moveAirVehicle",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Request to update the drone to fly to new waypoint location. The action is relevant only when the drone is on Observing status allocated to a mission allowing this request. On each request the drone will stop last fly-to request and commit the current request.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "missionId": {
+                    "type": "string",
+                    "description": "The missionId that the drone is allocated to"
+                  },
+                  "requestedLocation": {
+                    "$ref": "../../Models/geo/GEOPOINT3D.v1.json"
+                  },
+                  "altitude": {
+                    "type": "number",
+                    "description": "The MSL altitude for drone target point flight. The drone will fly on direct line to that point altitue.\nIf not sent, then - will be used the current drone MSL altitude."
+                  },
+                  "airVehicleId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "missionId",
+                  "requestedLocation",
+                  "airVehicleId"
+                ]
+              }
+            }
+          },
+          "description": "The fly-to parameters. If the heading type will not be sent the parameters will be the mission defined parameters"
+        },
+        "parameters": []
+      }
+    },
+    "/api/defineHeadingOnTargetTrackingMission": {
+      "post": {
+        "summary": "defineHeadingOnTargetTrackingMission (deprecated)",
+        "operationId": "post-api-defineHeadingOnTrackPointMission",
+        "responses": {
+          "200": {
+            "description": "If the drone is not in Observing status or any technical fail - return success false",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "LEGACY - changed to \"rotateAirVehicle\".\n\nRequest to update the drone heading. The action is relevant only when the drone is on Observing status allocated to a mission allowing this request. On each request the drone will stop last heading change and commit the current request.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "heading": {
+                    "$ref": "../../Models/General/heading.json"
+                  },
+                  "missionId": {
+                    "type": "string",
+                    "description": "The mission id that the drone is allocated to"
+                  },
+                  "airVehicleId": {
+                    "$ref": "../../Models/AirVehicle/airVehicleIdType.json"
+                  }
+                },
+                "required": [
+                  "heading",
+                  "missionId",
+                  "airVehicleId"
+                ]
+              }
+            }
+          },
+          "description": "Define the heading relative to north "
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/rotateAirVehicle": {
+      "post": {
+        "summary": "rotateAirVehicle",
+        "operationId": "post-api-rotateAirVehicle",
+        "responses": {
+          "200": {
+            "description": "If the drone is not in Observing status or any technical fail - return success false",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Request to update the drone heading. The action is relevant only when the drone is on Observing status allocated to a mission allowing this request. On each request the drone will stop last heading change and commit the current request.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "heading": {
+                    "$ref": "../../Models/General/heading.json"
+                  },
+                  "missionId": {
+                    "type": "string",
+                    "description": "The mission id that the drone is allocated to"
+                  },
+                  "airVehicleId": {
+                    "$ref": "../../Models/AirVehicle/airVehicleIdType.json"
+                  }
+                },
+                "required": [
+                  "heading",
+                  "missionId",
+                  "airVehicleId"
+                ]
+              }
+            }
+          },
+          "description": "Define the heading relative to north "
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    },
+    "/api/updateTargetTrackingLocation": {
+      "post": {
+        "summary": "updateTargetTrackingLocation",
+        "operationId": "post-api-updateTrackPointLocation",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "Call for updating the tracked point location during Track Point mission execution.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "missionID": {
+                    "type": "string",
+                    "description": "The mission id to update"
+                  },
+                  "trackPointLocation": {
+                    "$ref": "../../Models/geo/GEOPOINT3D.v1.json"
+                  }
+                },
+                "required": [
+                  "missionID",
+                  "trackPointLocation"
+                ]
+              }
+            }
+          },
+          "description": "The dynamic point new location"
+        }
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "in": "header",
+          "name": "Authorization",
+          "required": false,
+          "description": "bearer <<token>>"
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

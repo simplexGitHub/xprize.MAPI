@@ -1,0 +1,235 @@
+{
+  "openapi": "3.1.0",
+  "x-stoplight": {
+    "id": "co7wjgkhfq5m6"
+  },
+  "info": {
+    "title": "createElp",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/api/createElp": {
+      "post": {
+        "summary": "createElp",
+        "operationId": "post-api-createElp",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/ELP/elp_response.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/ELP/ELP_DATA.json"
+              }
+            }
+          }
+        },
+        "description": "API for create new Emergency Landing Point.\nThe system ignores the \"id\" field in the input data (ELP_DATA) and generates a new id (string)."
+      }
+    },
+    "/api/createElpArr": {
+      "post": {
+        "summary": "createElpArr",
+        "operationId": "post-api-createElpArr",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/updateElp": {
+      "post": {
+        "summary": "updateElp",
+        "operationId": "post-api-updateElp",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/ELP/elp_response.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "API for update Emergency Landing Point.\n"
+      }
+    },
+    "/api/deleteElp": {
+      "post": {
+        "summary": "deleteElp",
+        "operationId": "post-api-deleteElp",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/ELP/elp_response.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/General/ID_OBJ.v1.json"
+              }
+            }
+          }
+        },
+        "description": "for delete an ELP need to send elp-id "
+      }
+    },
+    "/api/getELP_DATA": {
+      "post": {
+        "summary": "getELP_DATA",
+        "operationId": "post-api-getELP_DATA",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/ELP/elp_response.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "get Emergency Landing Point data. need to send the ELP-id",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/General/ID_OBJ.v1.json"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/getAllELP_DATA_Arr": {
+      "post": {
+        "summary": "getAllELP_DATA_Arr",
+        "operationId": "post-api-getAllELP_DATA_Arr",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/ELP/all_elp_response.json"
+                }
+              }
+            }
+          }
+        },
+        "description": "get array of all Emergency Landing Points. "
+      }
+    },
+    "/api/rhElp": {
+      "post": {
+        "summary": "rhElp",
+        "operationId": "post-api-rhElp",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../../Models/General/ASYNC_RESPONSE.v1.json"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/ELP/RH_ELP_REQUEST.json"
+              }
+            }
+          }
+        },
+        "description": "\"return home\" - fly and land at an ELP (Emergency Landing Point).\nResponse: success true/false and description (if success false)"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "title": "User",
+        "type": "object",
+        "description": "",
+        "examples": [
+          {
+            "id": 142,
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": "alice.smith@gmail.com",
+            "dateOfBirth": "1997-10-31",
+            "emailVerified": true,
+            "signUpDate": "2019-08-24"
+          }
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the given user."
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "example": "1997-10-31"
+          },
+          "emailVerified": {
+            "type": "boolean",
+            "description": "Set to true if the user's email has been verified."
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date",
+            "description": "The date that the user was created."
+          }
+        },
+        "required": [
+          "id",
+          "firstName",
+          "lastName",
+          "email",
+          "emailVerified"
+        ]
+      }
+    }
+  }
+}

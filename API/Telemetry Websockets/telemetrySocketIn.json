@@ -1,0 +1,194 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "telemetryIn",
+    "version": "1.0",
+    "description": "Telemetry that MAPI receives using websocket. This is not a REST API and the data should be sent and received using websocket or UDP."
+  },
+  "servers": [
+    {
+      "url": "Websocket"
+    }
+  ],
+  "paths": {
+    "/CapsulesTelemetryIn": {
+      "post": {
+        "summary": "CapsulesTelemetryIn",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-CapsulesTelemetry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/TelemetryIn/CapsulesTelemetryIn.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nCanopies telemetry that is sent to MAPI via websocket"
+      },
+      "parameters": []
+    },
+    "/DetectorsTelemetryIn": {
+      "post": {
+        "summary": "DetectorsTelemetryIn",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-DetectorsTelemetry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/TelemetryIn/DetectorsTelemetryIn.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nDetectors telemetry that is sent to MAPI via websocket"
+      },
+      "parameters": []
+    },
+    "/ExternalAirVehiclesIn": {
+      "post": {
+        "summary": "ExternalAirVehiclesIn",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-ExternalAirVehiclesIn",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/TelemetryIn/externalAirVehiclesIn.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nExternal air vehicles telemetry that is sent to MAPI via websocket"
+      }
+    },
+    "/UDPManualControlCommand": {
+      "post": {
+        "summary": "UDPManualControlCommand",
+        "operationId": "post-UDPManualControlCommand",
+        "responses": {
+          "200": {
+            "description": "No response. This is UDP protocol."
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT UDP***\n\nManual control command that should be sent to MAPI via UDP port 7533 at 10Hz.\n\n- The commmand will only work if setManualControl request is sent successfuly.\n- The same token that is sent with setManualControl request should be used for all control commands even if the token itself is refreshed in the middle.\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "vx": {
+                    "type": "number",
+                    "description": "vx in m/s"
+                  },
+                  "vy": {
+                    "type": "number",
+                    "description": "vy in m/s"
+                  },
+                  "vz": {
+                    "type": "number",
+                    "description": "vz in m/s"
+                  },
+                  "token": {
+                    "type": "string",
+                    "description": "The Mapi token that was recieved by the Mapi Auth login. The caller should use the same token that was used when calling the \"setManualControl\" command. \nThe token should stay the same during the manual controling period (from setManualControl to setAutocontrol) even if the Mapi token was refreshed."
+                  },
+                  "airVehicleId": {
+                    "$ref": "../../Models/AirVehicle/airVehicleIdType.json"
+                  },
+                  "yaw": {
+                    "type": "number",
+                    "description": "The yaw angular velocity in degrees/sec . + - clockwize. (-)- couter clockwize"
+                  }
+                },
+                "required": [
+                  "vx",
+                  "vy",
+                  "vz",
+                  "token",
+                  "airVehicleId",
+                  "yaw"
+                ]
+              }
+            }
+          },
+          "description": "The udp messages should include the Mapi token. The manual control service in the c2 will check the token on each call and allow only valid one. "
+        }
+      },
+      "parameters": []
+    },
+    "/SocketManualControlCommand": {
+      "post": {
+        "summary": "SocketManualControlCommand",
+        "operationId": "post-SocketManualControlCommand",
+        "responses": {
+          "200": {
+            "description": "No response. This is UDP protocol."
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nManual control command that should be sent to MAPI via SOCKET port 7534 at 5Hz.\n\n- The commmand will only work if setManualControl request is sent successfuly.\n- The same token that is sent with setManualControl request should be used for all control commands even if the token itself is refreshed in the middle.\n- While the commands are received at 5Hz, they are transmitted to the drone in shorter intervals, therefore the forces will affect the drone additional X millisecond (defined in the config) after the last command.\n- The sockets are disconnected automatically after a period of time (defined in the config) without commands.\n\n\nThe Joystick commands should be sent within the -1 to 1 range (inclusive). The velocities are defined in the config. Directions:\n- vx: (+) forward, (-) backward,\n- vy: (+) right, (-) left,\n- vz: (+) down, (-) up,\n- yaw: (+) cw, (-) ccw\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "vx": {
+                    "type": "number",
+                    "description": "x scale velocity within inclusive -1 to 1 range. (+) forward, (-) backward",
+                    "maximum": 1,
+                    "minimum": -1
+                  },
+                  "vy": {
+                    "type": "number",
+                    "description": "y scale velocity within inclusive -1 to 1 range. (+) right, (-) left",
+                    "maximum": 1,
+                    "minimum": -1
+                  },
+                  "vz": {
+                    "type": "number",
+                    "description": "z scale velocity within inclusive -1 to 1 range. (+) down, (-) up",
+                    "maximum": 1,
+                    "minimum": -1
+                  },
+                  "token": {
+                    "type": "string",
+                    "description": "The Mapi token that was received by the Mapi Auth login. The caller should use the same token that was used when calling the \"setManualControl\" command. \nThe token should stay the same during the manual controling period (from setManualControl to setAutocontrol) even if the Mapi token was refreshed."
+                  },
+                  "airVehicleId": {
+                    "$ref": "../../Models/AirVehicle/airVehicleIdType.json"
+                  },
+                  "yaw": {
+                    "type": "number",
+                    "description": "The yaw angular velocity within inclusive -1 to 1 range. (+) cw, (-) ccw",
+                    "minimum": -1,
+                    "maximum": 1
+                  }
+                },
+                "required": [
+                  "vx",
+                  "vy",
+                  "vz",
+                  "token",
+                  "airVehicleId",
+                  "yaw"
+                ]
+              }
+            }
+          },
+          "description": "The udp messages should include the Mapi token. The manual control service in the c2 will check the token on each call and allow only valid one. "
+        }
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}

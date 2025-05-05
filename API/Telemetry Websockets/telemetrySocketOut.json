@@ -1,0 +1,240 @@
+{
+  "openapi": "3.0.0",
+  "x-stoplight": {
+    "id": "fsdjae7y4g432"
+  },
+  "info": {
+    "title": "telemetry",
+    "version": "1.0",
+    "description": "Telemetry that MAPI sends using websocket. This is not a REST API and the data should be sent and received using websocket."
+  },
+  "servers": [
+    {
+      "url": "Websocket"
+    }
+  ],
+  "paths": {
+    "/AirVehiclesTelemetry": {
+      "post": {
+        "summary": "AirVehiclesTelemetry",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-AirVehiclesTelemetry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/AirVehiclesTelemetry.v1.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nAir vehicles telemetry that MAPI sends via websocket"
+      }
+    },
+    "/CapsulesTelemetryOut": {
+      "post": {
+        "summary": "CapsulesTelemetryOut",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-CapsulesTelemetry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/CapsulesTelemetryOut.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nCapsules telemetry that MAPI sends via websocket"
+      },
+      "parameters": []
+    },
+    "/ExternalVehicles": {
+      "post": {
+        "summary": "ExternalVehicles",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-ExternalVehicles",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/externalVehiclesOut.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nExternal air vehicles telemetry that MAPI sends via websocket"
+      }
+    },
+    "/GimbalsTelemetry": {
+      "post": {
+        "summary": "GimbalsTelemetry",
+        "tags": [],
+        "operationId": "post-GimbalsTelemetry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/GimbalsTelemetry.v1.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nGimbals telemetry that MAPI sends via websocket"
+      }
+    },
+    "/MissionsTelemetry": {
+      "post": {
+        "summary": "MissionsTelemetry",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-MissionsTelemetry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/MissionsTelemetry.v1.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nMissions telemetry that MAPI sends via websocket"
+      }
+    },
+    "/UserMessages": {
+      "post": {
+        "summary": "UserMessages",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-UserMessages",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/OutUserMessages.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nUser messages telemetry that MAPI sends via websocket.\n\n- The number of messages sent is defined in the config.\n\n- In order to reduce the number of repeated messages, a grouping logic is implemented. Every new message is checked for 2 conditions:\n1. If the new message is similar to the newest message in the array\n2. The new message is type \"error\" and it is similar to an existing message at an index smaller than the number defined in the config (only the last X messages are checked for comparison, X defined in the config)\n- If it fits one of the conditions, the older message will be deleted and the new message will receive the same ID as the older one."
+      }
+    },
+    "/SiteTelemetry": {
+      "post": {
+        "summary": "SiteTelemetry",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-SiteTelemetry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/SiteTelemetry.v1.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nSite telemetry that MAPI sends via websocket"
+      }
+    },
+    "/TechnicalStatusTelemetry": {
+      "post": {
+        "summary": "TechnicalStatusTelemetry",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-TechnicalStatusTelemetry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/TechnicalStatusTelemetry.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nTechnical status telemetry that MAPI sends via websocket"
+      }
+    },
+    "/WinchesTelemetry": {
+      "post": {
+        "summary": "WinchesTelemetry",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-WinchesTelemetry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/WinchesTelemetry.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nWinches telemetry that MAPI sends via websocket"
+      }
+    },
+    "/DetectorsTelemetryOut": {
+      "post": {
+        "summary": "DetectorsTelemetryOut",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-DetectorsTelemetryOut",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/DetectorsTelemetryOut.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nDetectors telemetry that MAPI sends via websocket"
+      }
+    },
+    "/ExternalAirVehiclesOut": {
+      "post": {
+        "summary": "ExternalAirVehiclesOut",
+        "tags": [],
+        "responses": {},
+        "operationId": "post-ExternalAirVehiclesOut",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/externalVehiclesOut.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT WEBSOCKET***\n\nExternal air vehicles telemetry that MAPI sends via websocket"
+      }
+    },
+    "/UDPAirVehicleTelemetry": {
+      "post": {
+        "summary": "UDPAirVehicleTelemetry",
+        "operationId": "post-UDPAirVehicleTelemetry",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "../../Models/Telemetry/airVehiclesUdpTelemetryOut.json"
+              }
+            }
+          }
+        },
+        "description": "***THIS IS NOT A REST REQUEST, BUT UDP***\n\nAirVehicle short telemetry that MAPI sends via UDP\n\nThis message is sent if the following conditions are met:\n1. setManualControl request is sent successfuly\n2. At least one udp manual control command is sent with the token from setManualControl"
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}
