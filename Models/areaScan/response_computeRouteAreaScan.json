@@ -1,0 +1,16 @@
+{
+  "allOf": [
+    {
+      "$ref": "../General/ASYNC_RESPONSE.v1.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "./response_computeRouteAreaScan.json"
+        }
+      }
+    }
+  ],
+  "title": "response_computeRouteAreaScan"
+}

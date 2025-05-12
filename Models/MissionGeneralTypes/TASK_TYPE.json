@@ -1,0 +1,27 @@
+{
+  "title": "TASK_TYPE",
+  "x-stoplight": {
+    "id": "mw0esalzcstqu"
+  },
+  "type": "string",
+  "enum": [
+    "blank",
+    "Route",
+    "Point",
+    "WASP",
+    "MissionRoute",
+    "Security",
+    "MultiRoute",
+    "Dynamic",
+    "Shipping",
+    "ShipWithoutLanding",
+    "DeliveryPoint",
+    "ForceRoute",
+    "MultiDeploy",
+    "Deployment",
+    "TargetTracking",
+    "EmergencyLanding",
+    "AreaScan",
+    "AutomonousRoute"
+  ]
+}

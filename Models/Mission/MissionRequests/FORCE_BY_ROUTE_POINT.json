@@ -1,0 +1,32 @@
+{
+  "title": "FORCE_BY_ROUTE_POINT",
+  "x-stoplight": {
+    "id": "vitj7amr77v6a"
+  },
+  "type": "object",
+  "properties": {
+    "point": {
+      "anyOf": [
+        {
+          "$ref": "../../geo/POINT.v1.json"
+        },
+        {
+          "$ref": "../../geo/POINT3D.v1.json"
+        }
+      ]
+    },
+    "altType": {
+      "type": "string",
+      "enum": [
+        "AGL",
+        "ASL",
+        "ATP"
+      ],
+      "description": "Type of altitude in \"point\" param. AGL/ASL/ATP\n"
+    }
+  },
+  "required": [
+    "point",
+    "altType"
+  ]
+}

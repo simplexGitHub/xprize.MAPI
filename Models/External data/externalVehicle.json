@@ -1,0 +1,238 @@
+{
+  "description": "External vehicles sent to FlightOps by web socket",
+  "type": "object",
+  "x-examples": {
+    "example-1": {
+      "droneId": "12345",
+      "energy": 50,
+      "creationTimestamp": 123456789,
+      "location": {
+        "lat": 32.23,
+        "lon": 34.45
+      },
+      "altASL": 650,
+      "heading": 100,
+      "gimbalAngles": {
+        "yaw": 23.45,
+        "pitch": -33.4,
+        "roll": 45.3
+      },
+      "velocity": {
+        "x": 9.5,
+        "y": 7.3,
+        "z": 0
+      },
+      "bodyAngles": {
+        "q0": 0.893206,
+        "q1": 0.001921,
+        "q2": 0.006001,
+        "q3": -0.449604
+      },
+      "accelerations": {
+        "x": -0.002456,
+        "y": 0.00385,
+        "z": -0.011332
+      },
+      "barometrucAltASL": 670.56,
+      "GnssAltASL": 766.6,
+      "cameraMode": "Day",
+      "cameraZoom": 5,
+      "armed": true,
+      "homePoint": {
+        "lat": 32.45,
+        "lon": 34.33,
+        "alt": 70.6
+      },
+      "route": [
+        {
+          "waypoint": {
+            "lat": 32.2,
+            "lon": 34.55
+          },
+          "velocity": 10,
+          "altASL": 770.6
+        },
+        {
+          "waypoint": {
+            "lat": 32.3,
+            "lon": 34.65
+          },
+          "velocity": 10,
+          "altASL": 775.7
+        }
+      ]
+    }
+  },
+  "properties": {
+    "droneId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "energy": {
+      "type": "number"
+    },
+    "creationTimestamp": {
+      "type": "number"
+    },
+    "location": {
+      "$ref": "../geo/GEOPOINT_SHORT.v1.json"
+    },
+    "altASL": {
+      "type": "number"
+    },
+    "heading": {
+      "type": "number"
+    },
+    "gimbalAngles": {
+      "type": "object",
+      "properties": {
+        "yaw": {
+          "type": "number"
+        },
+        "pitch": {
+          "type": "number"
+        },
+        "roll": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "yaw",
+        "pitch",
+        "roll"
+      ]
+    },
+    "velocity": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "bodyAngles": {
+      "type": "object",
+      "properties": {
+        "q0": {
+          "type": "number"
+        },
+        "q1": {
+          "type": "number"
+        },
+        "q2": {
+          "type": "number"
+        },
+        "q3": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "q0",
+        "q1",
+        "q2",
+        "q3"
+      ]
+    },
+    "accelerations": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "barometrucAltASL": {
+      "type": "number"
+    },
+    "GnssAltASL": {
+      "type": "number"
+    },
+    "cameraMode": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "Day",
+        "Night"
+      ]
+    },
+    "cameraZoom": {
+      "type": "number"
+    },
+    "armed": {
+      "type": "boolean"
+    },
+    "homePoint": {
+      "$ref": "../geo/GEOPOINT_3D_SHORT.v1.json"
+    },
+    "route": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "properties": {
+          "waypoint": {
+            "$ref": "../geo/GEOPOINT_SHORT.v1.json"
+          },
+          "velocity": {
+            "type": "number"
+          },
+          "altASL": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "waypoint",
+          "velocity",
+          "altASL"
+        ]
+      }
+    },
+    "vehicleType": {
+      "type": "string",
+      "enum": [
+        "Heavy",
+        "Light",
+        "UltraLight",
+        "UAV",
+        "Obstacle"
+      ],
+      "description": "Vehicle type enums. If unknown then don't send object"
+    },
+    "callSign": {
+      "type": "string",
+      "description": "The vehicle name"
+    }
+  },
+  "required": [
+    "droneId",
+    "energy",
+    "creationTimestamp",
+    "location",
+    "altASL",
+    "heading",
+    "armed"
+  ]
+}

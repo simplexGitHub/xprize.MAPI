@@ -1,0 +1,22 @@
+{
+  "title": "SiteTelemetry",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "SiteTelemetry": {
+      "type": "object",
+      "required": [
+        "version"
+      ],
+      "properties": {
+        "version": {
+          "type": "number",
+          "description": "Version of site in DB received through webSocket"
+        }
+      }
+    }
+  },
+  "required": [
+    "SiteTelemetry"
+  ]
+}

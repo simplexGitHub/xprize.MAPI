@@ -1,0 +1,20 @@
+{
+  "title": "START_MISSION",
+  "x-stoplight": {
+    "id": "8jyeam89knd35"
+  },
+  "allOf": [
+    {
+      "$ref": "./missionId.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "isNoGPS": {
+          "type": "boolean",
+          "description": "Is mission without GPS"
+        }
+      }
+    }
+  ]
+}

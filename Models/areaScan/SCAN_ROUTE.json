@@ -1,0 +1,99 @@
+{
+  "title": "SCAN_ROUTE",
+  "x-stoplight": {
+    "id": "j86wnzjwqyple"
+  },
+  "type": "object",
+  "properties": {
+    "route": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "../geo/POINT.v1.json"
+          },
+          {
+            "$ref": "../geo/POINT3D.v1.json"
+          }
+        ]
+      }
+    },
+    "flightRoute": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "../geo/POINT.v1.json"
+          },
+          {
+            "$ref": "../geo/POINT3D.v1.json"
+          }
+        ]
+      }
+    },
+    "startPointCoord": {
+      "anyOf": [
+        {
+          "$ref": "../geo/POINT.v1.json"
+        },
+        {
+          "$ref": "../geo/POINT3D.v1.json"
+        }
+      ]
+    },
+    "endPointCoord": {
+      "anyOf": [
+        {
+          "$ref": "../geo/POINT.v1.json"
+        },
+        {
+          "$ref": "../geo/POINT3D.v1.json"
+        }
+      ]
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "trigger": {
+          "type": "string",
+          "enum": [
+            "TriggerByTime",
+            "TriggerByDistance"
+          ],
+          "default": "TriggerByDistance",
+          "example": "TriggerByDistance"
+        },
+        "triggerValue": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "trigger",
+        "triggerValue"
+      ]
+    },
+    "triggerPoints": {
+      "type": "array",
+      "items": {
+        "$ref": "../geo/POINT3D.v1.json"
+      }
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "manual"
+      ],
+      "default": "auto",
+      "example": "auto"
+    }
+  },
+  "required": [
+    "route",
+    "flightRoute",
+    "startPointCoord",
+    "endPointCoord",
+    "triggerPoints",
+    "direction"
+  ]
+}

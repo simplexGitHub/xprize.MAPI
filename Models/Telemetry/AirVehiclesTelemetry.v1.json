@@ -1,0 +1,14 @@
+{
+  "title": "AirVehicleTelemetry",
+  "type": "object",
+  "description": "Air Vehicle Telemetry Received through webSocket",
+  "examples": [],
+  "properties": {
+    "AirVehicleTelemetry": {
+      "type": "array",
+      "items": {
+        "$ref": "../AirVehicle/airVehicle.v1.json"
+      }
+    }
+  }
+}

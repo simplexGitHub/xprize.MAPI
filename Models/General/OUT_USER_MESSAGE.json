@@ -1,0 +1,68 @@
+{
+  "title": "OUT_USER_MESSAGE",
+  "x-stoplight": {
+    "id": "o74y02xmsilq5"
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "$ref": "./SEVERITY.json",
+      "x-stoplight": {
+        "id": "51us0zzqwrmwv"
+      }
+    },
+    "title": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "q21a2ohdzfau7"
+      }
+    },
+    "message": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "w7t3t95womds5"
+      }
+    },
+    "timestamp": {
+      "type": "number",
+      "x-stoplight": {
+        "id": "f7skm3yugvryc"
+      }
+    },
+    "errors": {
+      "$ref": "./ERROR.json",
+      "x-stoplight": {
+        "id": "n6v3blo9nstg4"
+      }
+    },
+    "airVehicleId": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "zvdmlj30fj5b5"
+      }
+    },
+    "missionId": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "0u1kl472wxuo3"
+      }
+    },
+    "emitter": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "nx1mepp3q7eyf"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "title",
+    "message",
+    "timestamp",
+    "emitter"
+  ]
+}

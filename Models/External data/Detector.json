@@ -1,0 +1,36 @@
+{
+  "title": "Detector",
+  "type": "object",
+  "description": "Detect and Avoid detector type",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The detector id"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Iris",
+        "Radar"
+      ]
+    },
+    "commStatus": {
+      "type": "string",
+      "enum": [
+        "NoComm",
+        "OK"
+      ]
+    },
+    "location": {
+      "$ref": "../geo/GEOPOINT_3D_SHORT.v1.json"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "commStatus"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "EXTERNAL_SCAN_DATA",
+  "x-stoplight": {
+    "id": "iyze4xr6zko4r"
+  },
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "$ref": "../Gimbal/TASK_METADATA.json"
+    },
+    "triggerPoints": {
+      "type": "array",
+      "items": {
+        "$ref": "./TRIGGER_POINTS.json"
+      }
+    },
+    "points": {
+      "type": "array",
+      "items": {
+        "$ref": "../geo/POINT.v1.json"
+      }
+    }
+  },
+  "required": [
+    "metadata",
+    "triggerPoints",
+    "points"
+  ]
+}

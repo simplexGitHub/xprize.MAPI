@@ -1,0 +1,16 @@
+{
+  "allOf": [
+    {
+      "$ref": "../../General/ASYNC_RESPONSE.v1.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "./CREATE_SCAN_MISSION_MODEL.json"
+        }
+      }
+    }
+  ],
+  "title": "response_SCAN_MISSION_MODEL"
+}

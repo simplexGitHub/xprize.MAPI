@@ -1,0 +1,26 @@
+{
+  "title": "WAYPOINT_ACTION_PARAMETERS",
+  "type": "object",
+  "properties": {
+    "waypointsMissionAction": {
+      "type": "string",
+      "enum": [
+        "Pause",
+        "Resume",
+        "ChangeAltitude",
+        "DropPackage",
+        "Stop",
+        "Rotate"
+      ]
+    },
+    "requestedAltitude": {
+      "type": "number"
+    },
+    "requestedAzimuth": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "waypointsMissionAction"
+  ]
+}

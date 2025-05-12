@@ -1,0 +1,13 @@
+{
+  "title": "externalVehiclesOut",
+  "type": "object",
+  "description": "Publishing by web socket the external vehicles submitted to FlightOps",
+  "properties": {
+    "ExternalVehiclesTelemetry": {
+      "type": "array",
+      "items": {
+        "$ref": "../External data/externalVehicle.json"
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "title": "airVehicleConfiguration",
+  "type": "object",
+  "description": "The static configuration type of air vehicle",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique ID of Air Vehicle"
+    },
+    "ip": {
+      "type": "string",
+      "description": "IP of Air vehicle"
+    },
+    "name": {
+      "type": "string",
+      "description": "Air vehicle name\n"
+    },
+    "type": {
+      "type": "string",
+      "description": "Air vehicle type",
+      "enum": [
+        "dji",
+        "pixhawk",
+        "alpha"
+      ]
+    },
+    "landingPointId": {
+      "type": "string",
+      "description": "ID of landing point in configuration "
+    },
+    "sensorIds": {
+      "type": "array",
+      "description": "Id of sensor connected to Air vehicle",
+      "items": {
+        "type": "string"
+      }
+    },
+    "taskTypes": {
+      "type": "object",
+      "description": "Task types the Air \nvehicle is capable of doing",
+      "properties": {
+        "Route": {
+          "type": "boolean"
+        },
+        "Point": {
+          "type": "boolean"
+        },
+        "WASP": {
+          "type": "boolean"
+        },
+        "Security": {
+          "type": "boolean"
+        },
+        "Ship": {
+          "type": "boolean"
+        },
+        "ShipWithoutLanding": {
+          "type": "boolean"
+        },
+        "DeliveryPoint": {
+          "type": "boolean"
+        }
+      }
+    },
+    "landingTypes": {
+      "type": "object",
+      "description": "Landing types the Air \nvehicle is capable of doing",
+      "properties": {
+        "normal": {
+          "type": "boolean",
+          "description": "The command Land to the air vehicle controller"
+        },
+        "optic": {
+          "type": "boolean",
+          "description": "Land using optic sensor on a ground shape"
+        },
+        "accurate": {
+          "type": "boolean",
+          "description": "Landing while fixing to a gps location "
+        }
+      }
+    },
+    "takeoffToCorridorPoint": {
+      "type": "boolean",
+      "description": "Is the air vehicle will takeoff vertical or to the coridor point (diagonal)"
+    },
+    "capsuleId": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "nj0gkm3tjhx71"
+      },
+      "description": "ID of capsule, if exists"
+    }
+  },
+  "required": [
+    "id",
+    "ip",
+    "name",
+    "type",
+    "landingPointId",
+    "sensorIds",
+    "taskTypes",
+    "landingTypes",
+    "takeoffToCorridorPoint"
+  ]
+}

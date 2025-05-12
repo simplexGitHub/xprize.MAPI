@@ -1,0 +1,97 @@
+{
+  "title": "PATROL_MISSION",
+  "x-stoplight": {
+    "id": "680t8falcjfw2"
+  },
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "tc08wriq733e0"
+      }
+    },
+    "isAGL": {
+      "type": "boolean",
+      "x-stoplight": {
+        "id": "uwy08mjqsjfzl"
+      }
+    },
+    "altitudeRange": {
+      "$ref": "../../General/RANGE.json",
+      "x-stoplight": {
+        "id": "69i2ek4epc49b"
+      }
+    },
+    "ASL_Max": {
+      "type": "number",
+      "x-stoplight": {
+        "id": "8ej6ywfhkbewj"
+      }
+    },
+    "slope": {
+      "$ref": "../../General/MAX_SLOPE_DEGREE.json",
+      "x-stoplight": {
+        "id": "7bezuh84ko8m6"
+      }
+    },
+    "isDynamicNFZ": {
+      "type": "boolean",
+      "x-stoplight": {
+        "id": "o3qofjmy0mesw"
+      }
+    },
+    "isStopMission": {
+      "type": "boolean",
+      "x-stoplight": {
+        "id": "099dllze2w68r"
+      }
+    },
+    "isRHSameRoute": {
+      "type": "boolean",
+      "x-stoplight": {
+        "id": "o6823o3wjj1l4"
+      }
+    },
+    "dynamicPartAltType": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "50o04i5ozb9es"
+      },
+      "enum": [
+        "auto",
+        "forceByRoute_Alt"
+      ]
+    },
+    "staticPartAltType": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "m91wifp7w46u5"
+      },
+      "enum": [
+        "operationalAlt",
+        "manualAlt"
+      ]
+    },
+    "patrolPoints": {
+      "type": "array",
+      "x-stoplight": {
+        "id": "gmb0zp6zdlbq8"
+      },
+      "minItems": 2,
+      "items": {
+        "$ref": "./PATROL_POINT.json",
+        "x-stoplight": {
+          "id": "s7rtze4taxrz6"
+        }
+      }
+    }
+  },
+  "required": [
+    "name",
+    "isDynamicNFZ",
+    "isStopMission",
+    "isRHSameRoute",
+    "patrolPoints"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "title": "setCameraZoom",
+  "x-stoplight": {
+    "id": "qfk1mr5l1qd3m"
+  },
+  "type": "object",
+  "properties": {
+    "sensorId": {
+      "type": "string",
+      "description": "The sensor id of the gimbal according to the configuration"
+    },
+    "zoomLevel": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 100,
+      "multipleOf": 1,
+      "description": "1 to 100"
+    }
+  },
+  "required": [
+    "sensorId",
+    "zoomLevel"
+  ]
+}

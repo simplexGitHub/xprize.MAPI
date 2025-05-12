@@ -1,0 +1,22 @@
+{
+  "title": "GEOPOINT_SHORT",
+  "type": "object",
+  "properties": {
+    "lat": {
+      "type": "number",
+      "minimum": -90,
+      "example": 34.81,
+      "maximum": 90
+    },
+    "lon": {
+      "type": "number",
+      "minimum": -180,
+      "example": 32.161,
+      "maximum": 180
+    }
+  },
+  "required": [
+    "lat",
+    "lon"
+  ]
+}

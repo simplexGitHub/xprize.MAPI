@@ -1,0 +1,16 @@
+{
+  "title": "CapsulesTelemetry",
+  "x-stoplight": {
+    "id": "s5j3yfhuek3tz"
+  },
+  "type": "object",
+  "description": "Array of capsules telemetry. Sent into MAPI.",
+  "properties": {
+    "CanopiesTelemetry": {
+      "type": "array",
+      "items": {
+        "$ref": "../Capsules/CapsuleTelemetry.json"
+      }
+    }
+  }
+}

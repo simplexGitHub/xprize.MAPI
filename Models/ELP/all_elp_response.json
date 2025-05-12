@@ -1,0 +1,21 @@
+{
+  "allOf": [
+    {
+      "$ref": "../General/ASYNC_RESPONSE.v1.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "./ELP_DATA.json"
+          }
+        }
+      },
+      "required": [
+        "data"
+      ]
+    }
+  ]
+}

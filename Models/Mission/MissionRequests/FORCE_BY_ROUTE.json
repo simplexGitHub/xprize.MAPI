@@ -1,0 +1,16 @@
+{
+  "type": "array",
+  "title": "FORCE_BY_ROUTE",
+  "minItems": 2,
+  "description": "Forces the uav to go through a static part in a dynamically created route. Order = array indexes. If height is not added, uses operational alt. Only possible if route is not AGL.",
+  "items": {
+    "anyOf": [
+      {
+        "$ref": "../../geo/POINT.v1.json"
+      },
+      {
+        "$ref": "../../geo/POINT3D.v1.json"
+      }
+    ]
+  }
+}

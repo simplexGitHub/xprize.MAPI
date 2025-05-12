@@ -1,0 +1,66 @@
+{
+  "title": "GEOJSON_MULTIPOLYGON",
+  "x-stoplight": {
+    "id": "qru2a81vm80to"
+  },
+  "type": "object",
+  "examples": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -180,
+                -180
+              ]
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "Feature"
+      ]
+    },
+    "geometry": {
+      "type": "object",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "MultiPolygon"
+          ],
+          "default": "MultiPolygon",
+          "example": "MultiPolygon"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "./POINT.v1.json"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "type",
+    "geometry"
+  ]
+}

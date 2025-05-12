@@ -1,0 +1,15 @@
+{
+  "title": "DetectorsTelemetry",
+  "x-stoplight": {
+    "id": "uhnftxbyrb14i"
+  },
+  "type": "object",
+  "properties": {
+    "DetectorsTelemetry": {
+      "type": "array",
+      "items": {
+        "$ref": "../External data/Detector.json"
+      }
+    }
+  }
+}

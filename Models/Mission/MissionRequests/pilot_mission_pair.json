@@ -1,0 +1,18 @@
+{
+  "title": "pilot_mission_pair",
+  "type": "object",
+  "properties": {
+    "pilotId": {
+      "type": "string",
+      "description": "ID of pilot"
+    },
+    "missionId": {
+      "type": "string",
+      "description": "ID of mission"
+    }
+  },
+  "required": [
+    "pilotId",
+    "missionId"
+  ]
+}

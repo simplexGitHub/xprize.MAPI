@@ -1,0 +1,13 @@
+{
+  "title": "MissionsTelemetry",
+  "type": "object",
+  "description": "Mission Telemetry Received through webSocket",
+  "properties": {
+    "MissionsTelemetry": {
+      "type": "array",
+      "items": {
+        "$ref": "../Mission/MissionTelemetryData/MissionTelemetryData.v1.json"
+      }
+    }
+  }
+}

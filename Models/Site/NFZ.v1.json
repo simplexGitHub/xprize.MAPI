@@ -1,0 +1,101 @@
+{
+  "title": "NFZ",
+  "type": "object",
+  "x-examples": {
+    "example-1": {
+      "id": "string",
+      "name": "string",
+      "maxAlt": 0,
+      "polygonPoints": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "examples": [
+    {
+      "id": "string",
+      "name": "string",
+      "maxAlt": 0,
+      "polygonPoints": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "type": "static"
+    }
+  ],
+  "description": "No Flight Zone entity ",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "maxAlt": {
+      "type": "number",
+      "description": "In case the NFZ is limited by altitude the altitude will be ASL.\nIn case unlimited altitude - ommit the field"
+    },
+    "polygonPoints": {
+      "type": "array",
+      "minItems": 4,
+      "description": "The points of the NFZ polygon. The point altitude is the ground altitude not the NFZ altitude !",
+      "items": {
+        "$ref": "../geo/POINT3D.v1.json"
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "static",
+        "dynamic"
+      ],
+      "description": "Type of NFZ. If Dynamic - an allowedId of the authorized drone need to be sent"
+    },
+    "allowedId": {
+      "type": "string",
+      "description": "The airvehice Id that can use the dynamic NFZ. All the other drones will not be autorize to enter the NFZ. Use that field when creatin dynamic NFZ.\nIf that field is not sent then the NFZ will be blocked for all drones"
+    }
+  },
+  "required": [
+    "name",
+    "polygonPoints",
+    "type"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Alerts",
+  "type": "object",
+  "properties": {
+    "Alerts": {
+      "type": "array",
+      "items": {
+        "$ref": "./Alert.json"
+      }
+    }
+  },
+  "description": "Array of Alert object sent by web socket. Each message should include all alerts"
+}

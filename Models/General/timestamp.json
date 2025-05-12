@@ -1,0 +1,8 @@
+{
+  "title": "timestamp",
+  "x-stoplight": {
+    "id": "l6f7g9r29zc7t"
+  },
+  "type": "number",
+  "description": "Standard timestamp (milisec from 1970)"
+}

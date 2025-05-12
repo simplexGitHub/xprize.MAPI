@@ -1,0 +1,44 @@
+{
+  "title": "GEOJSON_POLYGON",
+  "x-stoplight": {
+    "id": "v993q4xgcgyfp"
+  },
+  "type": "object",
+  "examples": [
+    {
+      "geometry": {
+        "type": "string",
+        "coordinates": [
+          [
+            [
+              -180,
+              -180
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "geometry": {
+      "type": "object",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "Polygon",
+          "example": "Polygon"
+        },
+        "coordinates": {
+          "$ref": "./POINT.v1.json"
+        }
+      }
+    }
+  },
+  "required": [
+    "geometry"
+  ]
+}

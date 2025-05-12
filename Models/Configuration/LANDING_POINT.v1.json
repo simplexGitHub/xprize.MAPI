@@ -1,0 +1,33 @@
+{
+  "title": "LANDING_POINT",
+  "type": "object",
+  "description": "Landing points that are used for optical landing",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID of landing point"
+    },
+    "location": {
+      "$ref": "../geo/GEOPOINT3D.v1.json"
+    },
+    "landingSurfaceHeight": {
+      "type": "number",
+      "description": "Landing surface height"
+    },
+    "name": {
+      "type": "string",
+      "description": "name of landing point"
+    },
+    "emergencyPointId": {
+      "type": "string",
+      "description": "ID of emergency point to use if landing fails"
+    }
+  },
+  "required": [
+    "id",
+    "location",
+    "landingSurfaceHeight",
+    "name",
+    "emergencyPointId"
+  ]
+}

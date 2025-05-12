@@ -1,0 +1,38 @@
+{
+  "title": "GeoPoint",
+  "type": "object",
+  "properties": {
+    "geometry": {
+      "type": "object",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "Point",
+          "example": "Point"
+        },
+        "coordinates": {
+          "$ref": "./POINT3D.v1.json"
+        }
+      }
+    }
+  },
+  "required": [
+    "geometry"
+  ],
+  "examples": [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "description": "Geo Json Point standrd "
+}

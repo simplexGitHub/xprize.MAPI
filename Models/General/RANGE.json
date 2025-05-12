@@ -1,0 +1,16 @@
+{
+  "title": "RANGE",
+  "x-stoplight": {
+    "id": "u8bz3gsxyw8c6"
+  },
+  "type": "object",
+  "properties": {
+    "min": {
+      "type": "number"
+    },
+    "max": {
+      "type": "number"
+    }
+  },
+  "required": ["min", "max"]
+}

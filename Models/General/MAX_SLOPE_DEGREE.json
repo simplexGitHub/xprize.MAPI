@@ -1,0 +1,17 @@
+{
+  "title": "MAX_SLOPE_DEGREE",
+  "x-stoplight": {
+    "id": "pzhxa5x3g4qy0"
+  },
+  "type": "object",
+  "properties": {
+    "maxSlopeDegree": {
+      "type": "number",
+      "maximum": 45,
+      "minimum": 0
+    }
+  },
+  "required": [
+    "maxSlopeDegree"
+  ]
+}

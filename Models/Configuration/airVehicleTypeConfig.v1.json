@@ -1,0 +1,43 @@
+{
+  "title": "airVehicleTypeConfig",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "dji",
+        "pixhawk",
+        "alpha"
+      ],
+      "description": "Type of Air vehicle"
+    },
+    "rateOfClimb": {
+      "type": "string",
+      "description": "Rate of climb use for hot swap calculations"
+    },
+    "rateOfLanding": {
+      "type": "string",
+      "description": "Rate of climb for landing use for hot swap calculations"
+    },
+    "spareEnergy": {
+      "type": "string",
+      "description": "Spare energy in percent for landing"
+    },
+    "hotSwapSpare": {
+      "type": "string",
+      "description": "How much spare energy need for the hot swap "
+    },
+    "defaultVelocity": {
+      "type": "string",
+      "description": "Default velocity in meters per second"
+    }
+  },
+  "required": [
+    "type",
+    "rateOfClimb",
+    "rateOfLanding",
+    "spareEnergy",
+    "hotSwapSpare",
+    "defaultVelocity"
+  ]
+}

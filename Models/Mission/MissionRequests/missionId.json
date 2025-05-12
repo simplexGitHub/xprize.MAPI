@@ -1,0 +1,12 @@
+{
+  "title": "missionId",
+  "type": "object",
+  "properties": {
+    "missionId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "missionId"
+  ]
+}

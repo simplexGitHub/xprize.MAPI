@@ -1,0 +1,18 @@
+{
+  "title": "SCAN_POINT_STATUS_RES",
+  "x-stoplight": {
+    "id": "e6e5c51hkxtm8"
+  },
+  "type": "string",
+  "enum": [
+    "NA",
+    "pending",
+    "requestToStart",
+    "inProgress",
+    "requestToEnd",
+    "done",
+    "fail"
+  ],
+  "default": "pending",
+  "example": "pending"
+}

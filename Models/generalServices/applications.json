@@ -1,0 +1,12 @@
+{
+  "title": "applications",
+  "x-stoplight": {
+    "id": "82kmk67173a3d"
+  },
+  "type": "string",
+  "description": "The enums of FlightOps applications",
+  "enum": [
+    "C2",
+    "Drone"
+  ]
+}

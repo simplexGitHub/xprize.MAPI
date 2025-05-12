@@ -1,0 +1,48 @@
+{
+  "title": "GEOPOINT3D",
+  "x-stoplight": {
+    "id": "fbnlknkutj2x1"
+  },
+  "type": "object",
+  "x-examples": {},
+  "description": "Lat lon and altitude of point ASL",
+  "examples": [
+    {
+      "latitude": 34.81,
+      "longitude": 32.161,
+      "altitude": 50
+    }
+  ],
+  "properties": {
+    "latitude": {
+      "type": "number",
+      "example": 32.81,
+      "minimum": -90,
+      "maximum": 90,
+      "x-stoplight": {
+        "id": "tp0kt8t4nzm7q"
+      }
+    },
+    "longitude": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180,
+      "example": 34.161,
+      "x-stoplight": {
+        "id": "f08xaa66wl99f"
+      }
+    },
+    "altitude": {
+      "type": "number",
+      "example": 50,
+      "default": 0,
+      "x-stoplight": {
+        "id": "z2ou9k73lry23"
+      }
+    }
+  },
+  "required": [
+    "latitude",
+    "longitude"
+  ]
+}

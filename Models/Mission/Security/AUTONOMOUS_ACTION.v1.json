@@ -1,0 +1,60 @@
+{
+  "title": "AUTONOMOUS_ACTION",
+  "type": "object",
+  "properties": {
+    "actionId": {
+      "type": "string"
+    },
+    "actionFor": {
+      "type": "string",
+      "enum": [
+        "Vehicle",
+        "Gimbal"
+      ],
+      "description": "Component for action"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "maneuver",
+        "Scan",
+        "Stow",
+        "Move"
+      ],
+      "description": "Type of action"
+    },
+    "startConditions": {
+      "$ref": "./ACTION_CONDITIONS.v1.json"
+    },
+    "endConditions": {
+      "$ref": "./ACTION_CONDITIONS.v1.json"
+    },
+    "onErrorAction": {
+      "$ref": "./ON_ERROR_ACTION_PARAMETERS.json"
+    },
+    "action": {
+      "anyOf": [
+        {
+          "$ref": "./SCAN_ACTION_PARAMETERS.json"
+        },
+        {
+          "$ref": "./GIMBAL_ACITON_PARAMETERS.json"
+        },
+        {
+          "$ref": "./WAYPOINT_ACTION_PARAMETERS.json"
+        },
+        {
+          "$ref": "./MOVE_ACTION_PARAMETERS.json"
+        }
+      ]
+    }
+  },
+  "required": [
+    "actionId",
+    "actionFor",
+    "type",
+    "startConditions",
+    "endConditions",
+    "onErrorAction"
+  ]
+}

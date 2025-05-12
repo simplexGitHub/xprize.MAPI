@@ -1,0 +1,37 @@
+{
+  "title": "sensorsConfig",
+  "type": "object",
+  "properties": {
+    "sensorId": {
+      "type": "string",
+      "description": "ID of sensor"
+    },
+    "sensorType": {
+      "type": "string",
+      "description": "Type of sensor",
+      "enum": [
+        "Winch",
+        "FPVCamera",
+        "DPVCamera"
+      ]
+    },
+    "sensorIP": {
+      "type": "string"
+    },
+    "videoURL": {
+      "type": "string"
+    },
+    "FOV": {
+      "type": "number"
+    },
+    "gimbalId": {
+      "type": "string",
+      "description": "If the sensor is attached to gimabl"
+    }
+  },
+  "required": [
+    "sensorId",
+    "sensorType"
+  ],
+  "description": "Sensor config type"
+}

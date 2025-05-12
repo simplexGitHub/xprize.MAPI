@@ -1,0 +1,16 @@
+{
+  "title": "externalAirVehicles",
+  "x-stoplight": {
+    "id": "ba87eebeb28fb"
+  },
+  "type": "object",
+  "description": "External air vehicles that can be sent to FlightOps",
+  "properties": {
+    "addUpdateExternalAirVehicles": {
+      "type": "array",
+      "items": {
+        "$ref": "../External data/externalVehicle.json"
+      }
+    }
+  }
+}

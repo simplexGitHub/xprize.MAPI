@@ -1,0 +1,16 @@
+{
+  "title": "DetectorsTelemetry",
+  "x-stoplight": {
+    "id": "d42c46ebe0407"
+  },
+  "type": "object",
+  "description": "Array of detectors (Detect and Avoid) detectors telemetry",
+  "properties": {
+    "MAPI_detectors": {
+      "type": "array",
+      "items": {
+        "$ref": "../External data/Detector.json"
+      }
+    }
+  }
+}

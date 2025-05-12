@@ -1,0 +1,56 @@
+{
+  "title": "WinchTelemetry",
+  "type": "object",
+  "properties": {
+   "winchId": {
+      "type": "string"
+    },
+    "airVehicleId": {
+      "type": "string"
+    },
+    "technicalStatus": {
+      "type": "string",
+      "enum": [
+        "OK",
+        "NotConnected"
+      ]
+    },
+    "lastUpdated": {
+      "type": "number"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "Attached",
+        "InAir",
+        "OnGround",
+        "FreeFall",
+        "Braking",
+        "ReelingDown",
+        "ReelingUp",
+        "FreeWheel",
+        "Dev",
+        "Unknown",
+        "Error"
+      ]
+    },
+    "airVehicleHeightAGL": {
+      "type": "number"
+    },
+    "payloadHeightAGL": {
+      "type": "number"
+    },
+    "scaleWeight": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "airVehicleId",
+    "technicalStatus",
+    "lastUpdated",
+    "state",
+    "airVehicleHeightAGL",
+    "payloadHeightAGL",
+    "scaleWeight"
+  ]
+}

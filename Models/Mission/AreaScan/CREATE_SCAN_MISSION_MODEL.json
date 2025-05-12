@@ -1,0 +1,97 @@
+{
+  "title": "CREATE_SCAN_MISSION_MODEL",
+  "x-stoplight": {
+    "id": "c35n4j6wvh7lp"
+  },
+  "type": "object",
+  "properties": {
+    "taskId": {
+      "type": "string",
+      "description": "generate by the system"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "default": "AreaScan",
+      "example": "AreaScan"
+    },
+    "azimuth": {
+      "type": "number"
+    },
+    "altitude": {
+      "type": "number"
+    },
+    "isAGL": {
+      "type": "boolean"
+    },
+    "sensorType": {
+      "type": "string"
+    },
+    "imageMode": {
+      "type": "number"
+    },
+    "speed": {
+      "type": "number"
+    },
+    "headingOverlap": {
+      "type": "number"
+    },
+    "sideOverlap": {
+      "type": "number"
+    },
+    "startPoint": {
+      "type": "number"
+    },
+    "endPoint": {
+      "type": "number"
+    },
+    "routeOffset": {
+      "type": "number"
+    },
+    "geometry": {
+      "type": "array",
+      "items": {
+        "$ref": "../../geo/POINT3D.v1.json"
+      }
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "auto",
+        "manual"
+      ],
+      "default": "auto",
+      "example": "auto"
+    },
+    "isInvert": {
+      "type": "boolean"
+    },
+    "flyToTaskParameters": {
+      "$ref": "../../MissionGeneralTypes/FLIGHT_PARAMETERS.json"
+    },
+    "isNoGPS": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name",
+    "type",
+    "azimuth",
+    "altitude",
+    "isAGL",
+    "sensorType",
+    "imageMode",
+    "speed",
+    "headingOverlap",
+    "sideOverlap",
+    "startPoint",
+    "endPoint",
+    "routeOffset",
+    "geometry",
+    "direction",
+    "isInvert",
+    "flyToTaskParameters"
+  ]
+}

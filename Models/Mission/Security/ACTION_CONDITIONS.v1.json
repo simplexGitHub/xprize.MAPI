@@ -1,0 +1,28 @@
+{
+  "title": "ACTION_CONDITIONS",
+  "type": "object",
+  "properties": {
+    "velocity": {
+      "type": "number"
+    },
+    "altitude": {
+      "type": "number"
+    },
+    "pointReached": {
+      "type": "boolean"
+    },
+    "timeFromRelativeAction": {
+      "type": "number"
+    },
+    "relWithAction": {
+      "type": "string",
+      "enum": [
+        "startToStart",
+        "endToStart"
+      ]
+    },
+    "relativeActionId": {
+      "type": "string"
+    }
+  }
+}

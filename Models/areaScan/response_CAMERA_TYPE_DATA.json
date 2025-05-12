@@ -1,0 +1,16 @@
+{
+  "allOf": [
+    {
+      "$ref": "../General/ASYNC_RESPONSE.v1.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "dataa": {
+          "$ref": "./CAMERA_TYPE_DATA.json"
+        }
+      }
+    }
+  ],
+  "title": "response_CAMERA_TYPE_DATA"
+}

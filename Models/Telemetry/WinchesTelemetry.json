@@ -1,0 +1,12 @@
+{
+  "title": "WinchesTelemetry",
+  "type": "object",
+  "properties": {
+    "WinchesTelemetry": {
+      "type": "array",
+      "items": {
+        "$ref": "../Winch/WinchTelemetry.json"
+      }
+    }
+  }
+}

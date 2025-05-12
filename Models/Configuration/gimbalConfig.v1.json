@@ -1,0 +1,19 @@
+{
+  "title": "gimbalConfig",
+  "type": "object",
+  "properties": {
+    "sensorId": {
+      "type": "string",
+      "description": "The sensor attached to the gimbal"
+    },
+    "gimbalType": {
+      "type": "string",
+      "description": "The gimbal type"
+    },
+    "gimbalIp": {
+      "type": "string",
+      "description": "What is the direct gimbal ip (if exist)"
+    }
+  },
+  "description": "The gimbal entity config type"
+}

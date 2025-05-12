@@ -1,0 +1,27 @@
+{
+  "title": "TASK_METADATA",
+  "x-stoplight": {
+    "id": "pr3z9ksgit4lo"
+  },
+  "type": "object",
+  "properties": {
+    "airVehicleId": {
+      "type": "string"
+    },
+    "taskId": {
+      "type": "string"
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "endTime": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "airVehicleId",
+    "taskId",
+    "startTime",
+    "endTime"
+  ]
+}

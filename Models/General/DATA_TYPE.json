@@ -1,0 +1,12 @@
+{
+  "title": "DATA_TYPE",
+  "x-stoplight": {
+    "id": "78ienfahiflpu"
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    }
+  }
+}

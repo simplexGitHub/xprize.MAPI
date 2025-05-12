@@ -1,0 +1,30 @@
+{
+  "title": "addMissionResponse",
+  "description": "If success = true then the mission id will be sent. If false then a fail description will be sent",
+  "anyOf": [
+    {
+      "$ref": "../../General/ASYNC_RESPONSE.v1.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "missionID": {
+          "type": "string",
+          "description": "The mission id of the new created mission"
+        }
+      }
+    }
+  ],
+  "x-examples": {
+    "example-1": {
+      "success": true,
+      "description": "string"
+    }
+  },
+  "examples": [
+    {
+      "success": true,
+      "missionID": "eveqipszge"
+    }
+  ]
+}

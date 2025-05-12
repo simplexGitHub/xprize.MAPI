@@ -1,0 +1,22 @@
+{
+  "title": "ASYNC_RESPONSE",
+  "type": "object",
+  "description": "General async response",
+  "properties": {
+    "success": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "./ERROR.json"
+      }
+    }
+  },
+  "required": [
+    "success"
+  ]
+}

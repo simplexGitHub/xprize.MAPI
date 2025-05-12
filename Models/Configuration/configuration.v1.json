@@ -1,0 +1,100 @@
+{
+  "allOf": [
+    {
+      "$ref": "../General/ASYNC_RESPONSE.v1.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "configuration": {
+          "type": "object",
+          "description": "The system configuration",
+          "properties": {
+            "airVehicles": {
+              "type": "array",
+              "items": {
+                "$ref": "./airVehicleConfig.v1.json"
+              }
+            },
+            "missions": {
+              "type": "array",
+              "items": {
+                "$ref": "./missionConfig.v1.json"
+              }
+            },
+            "landingPoints": {
+              "type": "array",
+              "items": {
+                "$ref": "./LANDING_POINT.v1.json"
+              }
+            },
+            "emergencyPoints": {
+              "type": "array",
+              "items": {
+                "$ref": "./EMERGENCY_POINT.v1.json"
+              }
+            },
+            "general": {
+              "$ref": "./generalConfig.v1.json"
+            },
+            "airVehicleTypesParameters": {
+              "type": "array",
+              "items": {
+                "$ref": "./airVehicleTypeConfig.v1.json"
+              }
+            },
+            "sensors": {
+              "type": "array",
+              "items": {
+                "$ref": "./sensorsConfig.v1.json"
+              }
+            },
+            "gimbals": {
+              "type": "array",
+              "items": {
+                "$ref": "./gimbalConfig.v1.json"
+              }
+            },
+            "capsules": {
+              "type": "array",
+              "items": {
+                "$ref": "./capsuleConfig.json"
+              }
+            },
+            "joystickForce": {
+              "type": "object",
+              "description": "Force velocity for manual control. Commands are sent within -1 to 1 range of these values",
+              "required": [
+                "v_horiz",
+                "vz",
+                "yaw"
+              ],
+              "properties": {
+                "v_horiz": {
+                  "type": "number"
+                },
+                "vz": {
+                  "type": "number"
+                },
+                "yaw": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "required": [
+            "airVehicles",
+            "missions",
+            "landingPoints",
+            "emergencyPoints",
+            "general",
+            "airVehicleTypesParameters",
+            "sensors",
+            "gimbals",
+            "joystickForce"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -86,7 +86,7 @@
                       "id": "string",
                       "name": "test",
                       "maxAlt": 5000,
-                      "polygonPoints": [
+                         "polygonPoints": [
                         [
                           -115.10354518890382,
                           35.96911507577482,
@@ -112,7 +112,7 @@
                           35.96911507577482,
                           0
                         ]
-                      ],
+                   ],
                       "type": "static"
                     }
                   }

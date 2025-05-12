@@ -1,0 +1,20 @@
+{
+  "title": "PATROL_POINT.json",
+  "x-stoplight": {
+    "id": "ofd50g5h3p51z"
+  },
+  "allOf": [
+    {
+      "$ref": "./PATROL_POINT_DEFAULT.json",
+      "x-stoplight": {
+        "id": "b4qihg598057o"
+      }
+    },
+    {
+      "$ref": "../../geo/GEOPOINT2-3D.v1.json",
+      "x-stoplight": {
+        "id": "oxagcwd5rpwzd"
+      }
+    }
+  ]
+}

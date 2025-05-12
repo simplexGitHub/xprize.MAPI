@@ -1,0 +1,23 @@
+{
+  "title": "TRIGGER_POINTS",
+  "x-stoplight": {
+    "id": "6yxtnnjq13mna"
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "point": {
+      "$ref": "../geo/POINT.v1.json"
+    },
+    "status": {
+      "$ref": "./SCAN_POINT_STATUS_RES.json"
+    }
+  },
+  "required": [
+    "id",
+    "point",
+    "status"
+  ]
+}

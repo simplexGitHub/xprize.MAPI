@@ -1,0 +1,63 @@
+{
+  "title": "POINT_PATROL",
+  "x-stoplight": {
+    "id": "vvnehvfzscm0s"
+  },
+  "type": "object",
+  "properties": {
+    "velocity": {
+      "type": "number",
+      "x-stoplight": {
+        "id": "e40mk79of7c5u"
+      }
+    },
+    "yaw": {
+      "type": "number",
+      "x-stoplight": {
+        "id": "tfs0xvupbdkhb"
+      }
+    },
+    "viewDistance": {
+      "type": "number",
+      "x-stoplight": {
+        "id": "iy6056o9n9z08"
+      }
+    },
+    "altType": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "ocx23x59b1rkd"
+      },
+      "enum": [
+        "AGL",
+        "ASL",
+        "ATP"
+      ]
+    },
+    "isNoAction": {
+      "type": "boolean",
+      "x-stoplight": {
+        "id": "spze69m0mualg"
+      }
+    },
+    "heading": {
+      "type": "number",
+      "x-stoplight": {
+        "id": "locas2a0zqbgm"
+      }
+    },
+    "headingType": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "5x927it3kt899"
+      },
+      "enum": [
+        "Auto",
+        "Manual"
+      ]
+    }
+  },
+  "required": [
+    "velocity"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "title": "EXTERNAL_SERVICES",
+  "x-stoplight": {
+    "id": "dn6q9dd3uzvyo"
+  },
+  "type": "object",
+  "properties": {
+    "CAS": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "N/A",
+            "Pending",
+            "InProcess",
+            "Error"
+          ]
+        },
+        "timestamp": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

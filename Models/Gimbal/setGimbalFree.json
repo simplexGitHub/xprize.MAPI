@@ -1,0 +1,10 @@
+{
+  "title": "setGimbalFree",
+  "type": "object",
+  "properties": {
+    "sensorId": {
+      "type": "string"
+    }
+  },
+  "description": "The gimbal id to set free"
+}

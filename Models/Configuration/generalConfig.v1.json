@@ -1,0 +1,49 @@
+{
+  "title": "generalConfig",
+  "type": "object",
+  "properties": {
+    "operationalAlt": {
+      "type": "object",
+      "description": "The altitude that the air vehicle will use if not set otherwise by the user of the air vehcle terrain follow",
+      "required": [
+        "altMin",
+        "altMax",
+        "altStep"
+      ],
+      "properties": {
+        "altMin": {
+          "type": "string",
+          "description": "Min operational alt available for Air vehicles"
+        },
+        "altMax": {
+          "type": "string",
+          "description": "Max operational alt available for Air vehicles"
+        },
+        "altStep": {
+          "type": "string",
+          "description": "Gap in altitude between Air vehicles"
+        }
+      }
+    },
+    "corridorAzimuth": {
+      "type": "number",
+      "description": "Corridor azimuth in degrees",
+      "minimum": 0,
+      "maximum": 360
+    },
+    "corridorSemiLength": {
+      "type": "number",
+      "description": "Corridor semi length in meters"
+    },
+    "noCommRHTime": {
+      "type": "number",
+      "description": "Time in seconds the drone waits before returning home when connection with C2 is lost"
+    }
+  },
+  "required": [
+    "operationalAlt",
+    "corridorAzimuth",
+    "corridorSemiLength",
+    "noCommRHTime"
+  ]
+}

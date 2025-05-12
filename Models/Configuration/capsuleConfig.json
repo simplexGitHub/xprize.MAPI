@@ -1,0 +1,23 @@
+{
+  "title": "capsuleConfig",
+  "x-stoplight": {
+    "id": "hvwdoaw4qn7mh"
+  },
+  "type": "object",
+  "properties": {
+    "capsuleId": {
+      "type": "string",
+      "description": "Capsule id"
+    },
+    "heading": {
+      "type": "number",
+      "description": "Drone heading relative to north for landing on capsule",
+      "minimum": 0,
+      "maximum": 360
+    }
+  },
+  "required": [
+    "capsuleId",
+    "heading"
+  ]
+}

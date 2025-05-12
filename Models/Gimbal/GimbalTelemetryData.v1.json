@@ -1,0 +1,43 @@
+{
+  "title": "Gimbal",
+  "type": "object",
+  "description": "The gimbal and camera telemetr",
+  "properties": {
+    "sensorId": {
+      "type": "string",
+      "description": "Unique ID of gimbal"
+    },
+    "gimbalType": {
+      "type": "string",
+      "description": "Type of gimbal",
+      "enum": [
+        "DJI",
+        "IG",
+        "ThirdEye",
+        "Ronin"
+      ]
+    },
+    "isLookAtTarget": {
+      "description": "If locked on target",
+      "type": "boolean"
+    },
+    "target": {
+      "$ref": "../geo/GeoPoint.v1.json"
+    },
+    "yaw": {
+      "type": "number"
+    },
+    "pitch": {
+      "type": "number"
+    },
+    "roll": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "sensorId",
+    "isLookAtTarget",
+    "yaw",
+    "pitch"
+  ]
+}

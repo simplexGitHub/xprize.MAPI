@@ -1,0 +1,49 @@
+{
+  "title": "GIMBAL_ACTION_PARAMETERS",
+  "type": "object",
+  "properties": {
+    "actionType": {
+      "type": "string",
+      "enum": [
+        "Scan",
+        "Stow",
+        "Move"
+      ]
+    },
+    "startScanYaw": {
+      "type": "number"
+    },
+    "finishScanYaw": {
+      "type": "number"
+    },
+    "relType": {
+      "type": "string",
+      "enum": [
+        "North",
+        "Body",
+        "WithGimbal"
+      ]
+    },
+    "pitch": {
+      "type": "number"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "clockwise",
+        "counterClockwise"
+      ]
+    },
+    "yaw": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "startScanYaw",
+    "finishScanYaw",
+    "relType",
+    "pitch",
+    "direction",
+    "yaw"
+  ]
+}

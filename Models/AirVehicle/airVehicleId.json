@@ -1,0 +1,13 @@
+{
+  "title": "airVehicleId",
+  "type": "object",
+  "description": "Air vehicle id type",
+  "properties": {
+    "airVehicleId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "airVehicleId"
+  ]
+}

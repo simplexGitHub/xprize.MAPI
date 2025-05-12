@@ -1,0 +1,36 @@
+{
+  "title": "SHIP_WITHOUT_LANDING_MISSION",
+  "description": "The ship without land mission data is acctually the point where the drone will start descending and at the altitude above ground defined on configuration will start ascending back to operational alt and then return home",
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Mission name"
+        },
+        "point": {
+          "$ref": "../../geo/GeoPoint.v1.json"
+        },
+        "containerHeight": {
+          "type": "number",
+          "description": "Container height. if not enterd it will be taken from configuration"
+        },
+        "heightAboveContainerForDrop": {
+          "type": "number",
+          "description": "AV height above Container. if not enterd it will be taken from configuration"
+        },
+        "forceByRoute": {
+          "$ref": "../MissionRequests/FORCE_BY_ROUTE.json"
+        }
+      },
+      "required": [
+        "name",
+        "point"
+      ]
+    },
+    {
+      "$ref": "../MissionRequests/AGL_PARAMS.json"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "SEVERITY",
+  "x-stoplight": {
+    "id": "1sp12tj97hgre"
+  },
+  "type": "string",
+  "enum": [
+    "success",
+    "error",
+    "info",
+    "warning"
+  ],
+  "default": "info",
+  "example": "info",
+  "minLength": 1,
+  "maxLength": 1
+}

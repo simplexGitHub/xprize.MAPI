@@ -1,0 +1,37 @@
+{
+  "title": "TechnicalStatusTelemetry",
+  "type": "object",
+  "description": "Technical status of servers",
+  "properties": {
+    "TechnicalStatusTelemetry": {
+      "type": "object",
+      "properties": {
+        "server": {
+          "type": "string",
+          "enum": [
+            "On",
+            "Off"
+          ],
+          "description": "Server connection status"
+        },
+        "comm": {
+          "type": "string",
+          "enum": [
+            "On",
+            "Off"
+          ],
+          "description": "Communication status"
+        },
+        "lastRestart": {
+          "type": "number",
+          "description": "Timestamp of last server restart"
+        }
+      },
+      "required": [
+        "server",
+        "comm",
+        "lastRestart"
+      ]
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "title": "missionConfig",
+  "type": "object",
+  "properties": {
+    "missionType": {
+      "type": "string",
+      "enum": [
+        "Route",
+        "Security",
+        "Point",
+        "WASP",
+        "Ship",
+        "ShipWithoutLanding"
+      ],
+      "description": "Type of mission"
+    },
+    "arriveToPointTolerance": {
+      "type": "string",
+      "description": "Tolerance to consider point is reached in meters"
+    },
+    "reachedOperHeightTolerace": {
+      "type": "string",
+      "description": "Tolerance to consider operational height is reached in meters"
+    },
+    "minEnergy": {
+      "type": "string",
+      "description": "Min energy for returning home in percent in case dynamic energy calculation did not return the air vehicle home "
+    },
+    "landingType": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "optic",
+        "accurate"
+      ],
+      "description": "Landing type for mission"
+    },
+    "containerHeight": {
+      "type": "number",
+      "description": "Relevant to ShipWithoutLanding and DeliveryPoint"
+    },
+    "heightAboveContainerForDrop": {
+      "type": "number",
+      "description": "Relevant to ShipWithoutLanding and DeliveryPoint"
+    }
+  },
+  "required": [
+    "missionType",
+    "arriveToPointTolerance",
+    "reachedOperHeightTolerace",
+    "minEnergy",
+    "landingType"
+  ],
+  "description": "The mission config type"
+}

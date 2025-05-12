@@ -1,0 +1,19 @@
+{
+  "title": "ON_ERROR_ACTION_PARAMETERS",
+  "x-stoplight": {
+    "id": "pq4tzolapon3a"
+  },
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "stopMission",
+        "continueMission"
+      ]
+    }
+  },
+  "required": [
+    "action"
+  ]
+}

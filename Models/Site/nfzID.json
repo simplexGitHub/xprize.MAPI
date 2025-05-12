@@ -1,0 +1,9 @@
+{
+  "title": "nfzID",
+  "type": "object",
+  "properties": {
+    "nfzID": {
+      "type": "string"
+    }
+  }
+}

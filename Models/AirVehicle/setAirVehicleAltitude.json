@@ -1,0 +1,20 @@
+{
+  "title": "setAirVehicleAltitude",
+  "type": "object",
+  "properties": {
+    "minAlt": {
+      "type": "number"
+    },
+    "maxAlt": {
+      "type": "number"
+    },
+    "airVehicleId": {
+      "type": "string"
+    }
+  },
+  "description": "Set the operational altitude of the drone. The system will allow the action to take place only when the drone is at No Active status and will enable to choose only free volumes (not occupied by other drones)",
+  "required": [
+    "minAlt",
+    "airVehicleId"
+  ]
+}

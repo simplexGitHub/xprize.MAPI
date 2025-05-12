@@ -1,0 +1,41 @@
+{
+  "title": "setGimbal",
+  "type": "object",
+  "examples": [
+    {
+      "sensorId": "sensor1",
+      "azimuthType": "North",
+      "yaw": 270,
+      "pitch": -45,
+      "roll": 0
+    }
+  ],
+  "description": "The gimbal requested data",
+  "properties": {
+    "sensorId": {
+      "type": "string"
+    },
+    "azimuthType": {
+      "type": "string",
+      "enum": [
+        "North",
+        "Body"
+      ]
+    },
+    "yaw": {
+      "type": "number"
+    },
+    "pitch": {
+      "type": "number"
+    },
+    "roll": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "sensorId",
+    "azimuthType",
+    "yaw",
+    "pitch"
+  ]
+}

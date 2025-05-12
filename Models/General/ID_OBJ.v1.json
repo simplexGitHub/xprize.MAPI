@@ -1,0 +1,12 @@
+{
+  "title": "ID_OBJ",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

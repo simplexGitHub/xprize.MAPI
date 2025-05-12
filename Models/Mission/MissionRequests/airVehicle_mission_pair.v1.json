@@ -1,0 +1,18 @@
+{
+  "title": "airVehicle_mission_pair",
+  "type": "object",
+  "properties": {
+    "airVehicleId": {
+      "type": "string"
+    },
+    "missionId": {
+      "type": "string",
+      "example": "mission_1",
+      "description": "task id"
+    }
+  },
+  "required": [
+    "airVehicleId",
+    "missionId"
+  ]
+}

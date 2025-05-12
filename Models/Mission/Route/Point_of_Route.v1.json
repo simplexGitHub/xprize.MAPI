@@ -1,0 +1,30 @@
+{
+  "title": "Point_of_Route",
+  "type": "object",
+  "properties": {
+    "yaw": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 359.99,
+      "example": 0
+    },
+    "toBody": {
+      "type": "boolean"
+    },
+    "velocity": {
+      "type": "number",
+      "minimum": 0,
+      "example": 5,
+      "maximum": 15
+    },
+    "PointLocation": {
+      "$ref": "../../geo/GeoPoint.v1.json"
+    }
+  },
+  "required": [
+    "yaw",
+    "toBody",
+    "velocity",
+    "PointLocation"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "title": "getDTMRequest",
+  "type": "array",
+  "items": {
+    "$ref": "../geo/GEOPOINT-2.v1.json"
+  },
+  "description": "Request body for getting ASL alt of a geo point"
+}

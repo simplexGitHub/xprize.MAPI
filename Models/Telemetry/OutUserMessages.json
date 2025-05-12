@@ -1,0 +1,16 @@
+{
+  "title": "outUserMessages",
+  "x-stoplight": {
+    "id": "qgoswwerip0q4"
+  },
+  "type": "object",
+  "description": "The last X (config) user messages",
+  "properties": {
+    "UserMessages": {
+      "type": "array",
+      "items": {
+        "$ref": "../generalServices/outUserMessage.json"
+      }
+    }
+  }
+}

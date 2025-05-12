@@ -1,0 +1,34 @@
+{
+  "title": "FLIGHT_PARAMETERS",
+  "x-stoplight": {
+    "id": "10z1efrtjxl06"
+  },
+  "type": "object",
+  "properties": {
+    "isAGL": {
+      "type": "boolean"
+    },
+    "altitudeRange": {
+      "$ref": "../General/RANGE.json"
+    },
+    "MSL_Max": {
+      "type": "number"
+    },
+    "slope": {
+      "allOf": [
+        {
+          "$ref": "../General/RANGE.json"
+        },
+        {
+          "$ref": "../General/MAX_SLOPE_DEGREE.json"
+        }
+      ]
+    }
+  },
+  "required": [
+    "isAGL",
+    "altitudeRange",
+    "MSL_Max",
+    "slope"
+  ]
+}

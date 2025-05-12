@@ -1,0 +1,30 @@
+{
+  "title": "GeoLineString",
+  "type": "object",
+  "properties": {
+    "geometry": {
+      "type": "object",
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": "LineString",
+          "example": "LineString"
+        },
+        "coordinates": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "$ref": "./POINT3D.v1.json"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "geometry"
+  ]
+}

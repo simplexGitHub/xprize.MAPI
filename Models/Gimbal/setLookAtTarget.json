@@ -1,0 +1,12 @@
+{
+  "title": "setLookAtTarget",
+  "type": "object",
+  "properties": {
+    "isLookAtTarget": {
+      "type": "boolean"
+    },
+    "sensorId": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "title": "RH_ELP_REQUEST",
+  "x-stoplight": {
+    "id": "gxf0fw4k6e3nt"
+  },
+  "type": "object",
+  "description": "\"return home\" - fly and land at an ELP (Emergency Landing Point)",
+  "properties": {
+    "airVehicleId": {
+      "type": "string",
+      "description": "air vehicle id"
+    },
+    "elpId": {
+      "type": "string",
+      "description": "ELP id"
+    },
+    "isForceRH": {
+      "type": "boolean",
+      "description": "if true - the AirVehicle will fly to ELP straight line with forceRh altitude"
+    }
+  },
+  "required": [
+    "airVehicleId",
+    "elpId"
+  ]
+}

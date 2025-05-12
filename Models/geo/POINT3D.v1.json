@@ -1,0 +1,10 @@
+{
+  "type": "array",
+  "title": "POINT3D",
+  "minItems": 2,
+  "maxItems": 3,
+  "description": "[longitude, latitude, altitude]",
+  "items": {
+    "type": "number"
+  }
+}

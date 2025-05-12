@@ -1,0 +1,16 @@
+{
+  "title": "getCalculatedRouteResponse",
+  "allOf": [
+    {
+      "$ref": "../../General/ASYNC_RESPONSE.v1.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "routePoints": {
+          "$ref": "../../geo/GeoLineString.v1.json"
+        }
+      }
+    }
+  ]
+}

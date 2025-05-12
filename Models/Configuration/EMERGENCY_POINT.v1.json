@@ -1,0 +1,27 @@
+{
+  "title": "EMERGENCY_POINT",
+  "type": "object",
+  "description": "Each emergency landing point attached to a landing point",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "ID of emergency point"
+    },
+    "location": {
+      "$ref": "../geo/GEOPOINT3D.v1.json"
+    },
+    "landingSurfaceHeight": {
+      "type": "number",
+      "description": "Landing surface height"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of emergency point"
+    }
+  },
+  "required": [
+    "id",
+    "location",
+    "landingSurfaceHeight"
+  ]
+}

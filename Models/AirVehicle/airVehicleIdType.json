@@ -1,0 +1,5 @@
+{
+  "title": "airVehicleId",
+  "type": "string",
+  "description": "Air vehicle id type"
+}

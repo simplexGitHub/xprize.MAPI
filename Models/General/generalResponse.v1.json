@@ -1,0 +1,9 @@
+{
+  "title": "generalResponse",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "string"
+    }
+  }
+}

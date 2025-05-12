@@ -1,0 +1,106 @@
+{
+  "title": "Alert",
+  "type": "object",
+  "description": "Alerts refferenced to FlightOps air vehilces that are in proximity to External air vehicles",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The alert id. Should be unique"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Collision",
+        "NFZ",
+        "General"
+      ]
+    },
+    "airVehicleId": {
+      "type": "string"
+    },
+    "alertData": {
+      "oneOf": [
+        {
+          "description": "In case type = Collison",
+          "properties": {
+            "collisionWith": {
+              "type": "object",
+              "description": "Array of external / internal vehicles Id that in collision risk with the defined FlightOps air vehicle",
+              "required": [
+                "vehicleId"
+              ],
+              "properties": {
+                "vehicleId": {
+                  "type": "string",
+                  "description": "Vehicle that in collision with the FlightOps defined air vehicle"
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "Warning",
+                    "Alert",
+                    "HighAlert"
+                  ]
+                },
+                "distance": {
+                  "type": "number",
+                  "description": "The distance from the air vehicle in meters"
+                },
+                "vehicleType": {
+                  "type": "string",
+                  "enum": [
+                    "Heavy",
+                    "Light",
+                    "UltraLight",
+                    "UAV",
+                    "Obstacle"
+                  ],
+                  "example": "Heavy"
+                },
+                "location": {
+                  "$ref": "../geo/GEOPOINT_3D_SHORT.v1.json"
+                }
+              }
+            },
+            "description": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "collisionWith"
+          ]
+        },
+        {
+          "description": "In case of NFZ",
+          "properties": {
+            "collisionWith": {
+              "type": "object",
+              "properties": {
+                "NFZId": {
+                  "type": "string"
+                },
+                "distance": {
+                  "type": "number",
+                  "description": "Distance from the NFZ in meters"
+                }
+              },
+              "required": [
+                "NFZId"
+              ]
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "airVehicleId",
+    "alertData"
+  ]
+}

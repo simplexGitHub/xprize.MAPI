@@ -1,0 +1,87 @@
+{
+  "title": "airVehicleUdp",
+  "type": "object",
+  "x-examples": {},
+  "description": "The air vehicle UDP entity - for the purpose of high frequency us",
+  "examples": [],
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "localhost:7705",
+      "description": "Unique ID of Air vehicle"
+    },
+    "location": {
+      "$ref": "../geo/GeoPoint.v1.json"
+    },
+    "heading": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 360,
+      "example": 45,
+      "description": "Heading relative to north in degrees"
+    },
+    "altitudeAtp": {
+      "type": "number",
+      "example": 50,
+      "description": "Height above takeoff in meters"
+    },
+    "velocity": {
+      "type": "object",
+      "example": 10,
+      "description": "Air vehicle velocity in meter per second",
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "description": "Vx in m/s in drone body coordinates"
+        },
+        "y": {
+          "type": "number",
+          "description": "vy in m/s in drone body coordinates"
+        },
+        "z": {
+          "type": "number",
+          "description": "vz in m/s in drone body coordinates"
+        }
+      }
+    },
+    "gimbal": {
+      "type": "object",
+      "required": [
+        "pitch",
+        "yaw"
+      ],
+      "properties": {
+        "pitch": {
+          "type": "number",
+          "minimum": -360,
+          "maximum": 360
+        },
+        "yaw": {
+          "type": "number",
+          "minimum": -360,
+          "maximum": 360
+        },
+        "roll": {
+          "type": "number"
+        }
+      }
+    },
+    "timestamp": {
+      "type": "number",
+      "description": "Timestamp when telemetry arrives from drone"
+    }
+  },
+  "required": [
+    "id",
+    "location",
+    "heading",
+    "altitudeAtp",
+    "velocity",
+    "gimbal"
+  ]
+}

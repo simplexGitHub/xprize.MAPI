@@ -1,0 +1,21 @@
+{
+  "title": "gimbalMove",
+  "type": "object",
+  "properties": {
+    "sensorId": {
+      "type": "string"
+    },
+    "deltaYaw": {
+      "type": "number"
+    },
+    "deltaPitch": {
+      "type": "number"
+    },
+    "deltaRoll": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "sensorId"
+  ]
+}

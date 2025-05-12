@@ -1,0 +1,22 @@
+{
+  "title": "Perimeter",
+  "type": "object",
+  "properties": {
+    "polygonPoints": {
+      "type": "array",
+      "description": "Perimeter polygon",
+      "minItems": 4,
+      "items": {
+        "$ref": "../geo/POINT.v1.json"
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "Area name"
+    }
+  },
+  "required": [
+    "polygonPoints"
+  ],
+  "description": ""
+}

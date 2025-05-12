@@ -1,0 +1,14 @@
+{
+  "title": "ADD_PATROL_MISSION",
+  "x-stoplight": {
+    "id": "9tkgcxca74t3a"
+  },
+  "allOf": [
+    {
+      "$ref": "./PATROL_MISSION.json",
+      "x-stoplight": {
+        "id": "vx2ll0o92vf57"
+      }
+    }
+  ]
+}

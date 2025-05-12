@@ -1,0 +1,18 @@
+{
+  "title": "ALGORITHM_STATUS",
+  "x-stoplight": {
+    "id": "avdd6935l7atw"
+  },
+  "type": "string",
+  "enum": [
+    "Started",
+    "Paused",
+    "resumeAlgorithm",
+    "Stopped",
+    "InProcess",
+    "finished",
+    "Unknown"
+  ],
+  "default": "Stopped",
+  "example": "Stopped"
+}

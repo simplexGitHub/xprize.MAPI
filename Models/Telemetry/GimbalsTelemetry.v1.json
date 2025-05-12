@@ -1,0 +1,37 @@
+{
+  "title": "GimbalTelemetry",
+  "type": "object",
+  "description": "Gimbal Telemetry Received through webSocket",
+  "properties": {
+    "GimbalsTelemetry": {
+      "type": "array",
+      "items": {
+        "$ref": "../Gimbal/GimbalTelemetryData.v1.json"
+      }
+    }
+  },
+  "examples": [
+    {
+      "GimbalsTelemetry": [
+        {
+          "id": "123",
+          "gimbalType": "camera",
+          "isLookAtTarget": true,
+          "target": {
+            "geometry": {
+              "type": "string",
+              "coordinates": [
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "yaw": 270,
+          "pitch": -5,
+          "roll": 10
+        }
+      ]
+    }
+  ]
+}

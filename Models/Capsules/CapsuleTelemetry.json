@@ -1,0 +1,49 @@
+{
+  "title": "CapsuleTelemetry",
+  "type": "object",
+  "description": "Capsule telemetry data",
+  "properties": {
+    "capsuleId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Idle",
+        "ReadyForTakeOff",
+        "ReadyForLanding",
+        "PrepareForTakeOff",
+        "PrepareForLanding",
+        "Error",
+        "PrepareForAfterLanding",
+        "BarsAndCoverClosed",
+        "CoverCloseAndCharging"
+      ]
+    },
+    "lock": {
+      "type": "boolean",
+      "description": "If the capsule is locked for drone operation"
+    },
+    "description": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "number",
+      "description": "Drone heading relative to north for landing on capsule. If not sent, it is taken from config",
+      "minimum": 0,
+      "maximum": 360
+    },
+    "timestamp": {
+      "type": "number",
+      "description": "timestamp of the last telemetry received from the capsule"
+    }
+  },
+  "required": [
+    "capsuleId",
+    "status",
+    "lock"
+  ]
+}

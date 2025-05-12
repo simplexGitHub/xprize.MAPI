@@ -1,0 +1,16 @@
+{
+  "title": "POINT_OF_ROUTE_DATA",
+  "type": "object",
+  "properties": {
+    "velocity": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "PointLocation": {
+      "$ref": "../../geo/GeoPoint.v1.json"
+    }
+  },
+  "required": [
+    "PointLocation"
+  ]
+}

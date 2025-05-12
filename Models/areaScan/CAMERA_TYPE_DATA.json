@@ -1,0 +1,49 @@
+{
+  "title": "CAMERA_TYPE_DATA",
+  "x-stoplight": {
+    "id": "qujqbjsahp80c"
+  },
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "camera type"
+    },
+    "name": {
+      "type": "string",
+      "description": "camera type name"
+    },
+    "focalLength": {
+      "type": "string",
+      "description": "lens focal length"
+    },
+    "sensorWidth": {
+      "type": "string",
+      "description": "matrix size (millimeters) - width"
+    },
+    "sensorHeight": {
+      "type": "string",
+      "description": "matrix size (millimeters) - height"
+    },
+    "imageModesArr": {
+      "type": "string",
+      "enum": [
+        "day",
+        "night",
+        "pallet",
+        "thermal"
+      ],
+      "default": "day",
+      "example": "day",
+      "description": "evailable camera image mode"
+    }
+  },
+  "required": [
+    "type",
+    "name",
+    "focalLength",
+    "sensorWidth",
+    "sensorHeight",
+    "imageModesArr"
+  ]
+}

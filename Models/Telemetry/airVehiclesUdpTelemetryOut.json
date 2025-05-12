@@ -1,0 +1,16 @@
+{
+  "title": "airVehiclesUdpTelemetryOut",
+  "x-stoplight": {
+    "id": "orfxbbxulvpex"
+  },
+  "type": "object",
+  "description": "Telemetry data related to air vehicles in high hz over udp ",
+  "properties": {
+    "airVehiclesUdpTelemetry": {
+      "type": "array",
+      "items": {
+        "$ref": "../AirVehicle/airVehicleUdp.json"
+      }
+    }
+  }
+}

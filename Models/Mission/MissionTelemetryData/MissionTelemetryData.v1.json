@@ -1,0 +1,138 @@
+{
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "missionId": {
+          "type": "string",
+          "description": "Unique ID of mission"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Route",
+            "Point",
+            "WASP",
+            "Security",
+            "Ship",
+            "ShipWithoutLanding",
+            "DeliveryPoint",
+            "Dynamic",
+            "FireTargetTracking"
+          ],
+          "description": "Type of mission"
+        },
+        "status": {
+          "type": "string",
+          "description": "Mission's status",
+          "enum": [
+            "Started",
+            "Stopped",
+            "StopProccess"
+          ]
+        },
+        "totalLength": {
+          "type": "string",
+          "description": "Total length of route from home to end of mission in meters"
+        },
+        "pilotId": {
+          "type": "string"
+        },
+        "creationTime": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "missionId",
+        "type",
+        "status"
+      ]
+    },
+    {
+      "oneOf": [
+        {
+          "$ref": "../Route/ROUTE_MISSION.v1.json"
+        },
+        {
+          "$ref": "../Point/POINT_MISSION.v1.json"
+        },
+        {
+          "$ref": "../Security/SECURITY_MISSION.v1.json"
+        },
+        {
+          "$ref": "../Wasp/WASP_MISSION.v1.json"
+        },
+        {
+          "$ref": "../TargetTracking/TARGET_TRACKING_MISSION.json"
+        },
+        {
+          "$ref": "../TargetTracking/TARGET_TRACKING_MISSION.json"
+        },
+        {
+          "$ref": "../Ship/SHIP_MISSION.v1.json"
+        },
+        {
+          "$ref": "../DynamicPoint/DYNAMIC_POINT_MISSIOM.json"
+        },
+        {
+          "$ref": "../DeliveryPoint/DELIVERY_POINT_MISSION.json"
+        },
+        {
+          "$ref": "../Patrol/PATROL_MISSION.json"
+        },
+        {
+          "$ref": "../FireTargetTracking/FIRE_TARGET_TRACKING_MISSION.json"
+        }
+      ]
+    }
+  ],
+  "examples": [
+    {
+      "missionId": "string",
+      "type": "Route",
+      "status": "Started",
+      "totalLength": "string",
+      "pilotId": "string",
+      "creationTime": 0,
+      "routeMission": {
+        "yaw": 0,
+        "toBody": true,
+        "velocity": 12,
+        "actionOnRouteEnd": "Hover",
+        "routePoints": [
+          {
+            "yaw": 0,
+            "toBody": true,
+            "velocity": 0,
+            "PointLocation": {
+              "geometry": {
+                "type": "string",
+                "coordinates": [
+                  -117.199,
+                  32.8969,
+                  0
+                ]
+              }
+            }
+          },
+          {
+            "yaw": 0,
+            "toBody": true,
+            "velocity": 0,
+            "PointLocation": {
+              "geometry": {
+                "type": "string",
+                "coordinates": [
+                  -117.199,
+                  32.8976,
+                  0
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "name": "Route Example"
+    }
+  ]
+}
